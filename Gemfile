@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.1'
+
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -42,3 +44,4 @@ gem 'blacklight-marc', '~> 5.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'slim-rails', '~> 3.0.1'
+gem 'rails_12factor', group: :production

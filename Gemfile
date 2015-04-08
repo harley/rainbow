@@ -45,3 +45,5 @@ gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'slim-rails', '~> 3.0.1'
 gem 'rails_12factor', group: :production
+gem 'sunspot_rails'
+gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development

@@ -29,4 +29,5 @@ config/initializers/secret_token.rb
 *.bowerrc
 bower.json
 .env.local
-jetty
+solr/development
+solr/pids

@@ -47,5 +47,7 @@ gem 'slim-rails', '~> 3.0.1'
 gem 'rails_12factor', group: :production
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
-gem 'simple_form'
-gem 'rails_admin'
+gem 'simple_form', '~> 3.1.0'
+gem 'rails_admin', '~> 0.6.7'
+gem 'enumerize', '~> 0.11.0'
+gem 'omniauth-google-oauth2'

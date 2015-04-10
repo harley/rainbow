@@ -2,6 +2,7 @@ class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
       t.string :title
+      t.string :kind
       t.string :author
       t.text :summary
       t.integer :number_of_pages

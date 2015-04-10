@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  summary: MyText
+  number_of_pages: 1
+  image: MyString
+  code: MyString
+  publisher: MyString
+
+two:
+  title: MyString
+  author: MyString
+  summary: MyText
+  number_of_pages: 1
+  image: MyString
+  code: MyString
+  publisher: MyString

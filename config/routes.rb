@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :items
   Blacklight::Marc.add_routes(self)
   root to: "catalog#index"
   blacklight_for :catalog

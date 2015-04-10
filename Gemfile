@@ -48,3 +48,4 @@ gem 'rails_12factor', group: :production
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 gem 'simple_form'
+gem 'rails_admin'

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :items
   Blacklight::Marc.add_routes(self)
   root to: "catalog#index"

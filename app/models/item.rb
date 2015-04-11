@@ -18,6 +18,8 @@ class Item < ActiveRecord::Base
 
   has_many :reservations, dependent: :destroy
 
+  before_save :check_available_count
+
   def added_by
     User.find_by_id(added_by_id)
   end
@@ -29,5 +31,10 @@ class Item < ActiveRecord::Base
 
   def after_import_save(row, map)
     # Your custom special sauce
+  end
+
+  def check_available_count
+    remaining = quantity - reservations.active.count
+    self.available_count = remaining
   end
 end

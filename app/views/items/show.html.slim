@@ -1,16 +1,34 @@
-
-.col-xs-6.col-sm-4.col-md-3.col-lg-2.item
-  .thumbnail
-    - if @item.filepicker_url?
-      = filepicker_image_tag @item.filepicker_url, w: 160, h: 160, fit: 'clip'
-    - else
-      = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
-    .caption
-      = render 'item_preview', item: @item
-      .item-extras
-        .item-summary
-          strong> Summary:
-          br
-          = simple_format @item.summary
-      .list-group-item-footer
-        = link_to 'edit', edit_item_path(@item), class: 'btn btn-default btn-sm'
+.row
+  .col-sm-6.item
+    .thumbnail
+      = render 'available_count', item: @item
+      = link_to @item do
+        - if @item.filepicker_url?
+          = filepicker_image_tag @item.filepicker_url, w: 160, h: 160, fit: 'clip'
+        - else
+          = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
+      .caption
+        = render 'item_preview', item: @item
+        .item-extras
+          .item-summary
+            strong> Summary:
+            br
+            = simple_format @item.summary
+        .list-group-item-footer
+          => link_to 'edit', edit_item_path(@item), class: 'btn btn-default btn-sm'
+  .col-sm-6
+    h1 Reservations
+    table.table
+      thead
+        tr
+          td Borrower
+          td Due date
+          td Checked out by
+          td Checked in by
+      tbody
+        - @item.reservations.each do |reservation|
+          tr
+            td = reservation.reserver.full_name
+            td.timestamp = reservation.due_date.to_s(:day_long)
+            td
+            td

@@ -49,4 +49,4 @@ gem 'omniauth-google-oauth2'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'filepicker-rails'
-gem "rails_admin_import"
+gem "rails_admin_import", path: 'vendor/gems/rails_admin_import'

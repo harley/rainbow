@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :members
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :items
   devise_for :users

@@ -5,15 +5,19 @@
   = f.filepicker_field :filepicker_url, class: 'btn btn-default', button_text: "Change Image"
   = f.input :title
   = f.input :kind
+  = f.association :category, input_html: {class: 'selectize'}
+  = f.association :school_level, input_html: {class: 'selectize'}
+  = f.association :subject, input_html: {class: 'selectize'}
   = f.input :author
   = f.input :summary
   = f.input :number_of_pages
   = f.input :code
   = f.input :publisher
   = f.input :quantity
-  = f.association :subject
-  = f.association :school_level
-  = f.association :category
   = f.submit nil, class: 'btn btn-default'
 
 = filepicker_js_include_tag
+
+coffee:
+  $('select.selectize').each ->
+    $(this).selectize()

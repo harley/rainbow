@@ -1,3 +1,22 @@
-// Place all the styles related to the Items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.item.list-group-item
+{
+    /*reset the grid float and width and add a background for fun */
+    float: none;
+    width: 100%;
+}
+/* give the image a left float in the list view */
+.item.list-group-item img{float:left;}
+/* and clearfix the left float of the image */
+.item.list-group-item:before,
+.item.list-group-item:after {
+  display: table;
+  content: " ";
+}
+.item.list-group-item:after
+{
+    clear:both;
+}
+
+.item {
+  padding: 10px;
+}

@@ -45,3 +45,5 @@ gem 'simple_form', '~> 3.1.0'
 gem 'rails_admin', '~> 0.6.7'
 gem 'enumerize', '~> 0.11.0'
 gem 'omniauth-google-oauth2'
+
+gem 'bootstrap-sass', '~> 3.3.4.1'

@@ -1,0 +1,31 @@
+= form_tag items_path, method: 'get' do
+  p
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search", name: nil
+
+
+.btn-group
+  a#list.btn.btn-default
+    span.glyphicon.glyphicon-th-list>
+    | List
+  a#grid.btn.btn-default.active
+    span.glyphicon.glyphicon-th>
+    | Grid
+
+
+.items
+  .row.list-group
+    - @items.each do |item|
+      .col-sm-4.item
+        = image_tag "http://placehold.it/100&text=Coming+soon!", class: 'list-group-image'
+        h4.list-group-item-heading = item.title
+        p.list-group-item-text = item.summary
+
+coffee:
+  $('#list').click ->
+    $('.items .item').addClass('list-group-item')
+    $(this).addClass('active').siblings().removeClass('active')
+
+  $('#grid').click ->
+    $('.items .item').removeClass('list-group-item')
+    $(this).addClass('active').siblings().removeClass('active')

@@ -7,3 +7,6 @@ h1 Hello
       = f.association :reserver
       = f.input :due_date, as: :date, html5: true
       = f.submit "Reserve", class: 'btn btn-primary btn-block'
+
+javascript:
+  $('select').selectize();

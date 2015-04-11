@@ -1,6 +1,9 @@
 class ReservationsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
-    redirect_to '/admin/reservation'
+    @member = current_user.member
+    @reservations = current_user.reservations
   end
 
   def show

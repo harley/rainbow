@@ -12,13 +12,16 @@
   width: 100%;
   .thumbnail {
     border: none;
-    img {
-      margin-right: 15px;
-    }
+    text-align: left;
   }
 }
 /* give the image a left float in the list view */
-.item.list-group-item img{float:left;}
+.item.list-group-item > .thumbnail > a {
+  width: 167px;
+  float: left;
+  margin-right: 15px;
+}
+// .item.list-group-item > a img {float:left;}
 /* and clearfix the left float of the image */
 .item.list-group-item:before,
 .item.list-group-item:after {
@@ -38,4 +41,8 @@
   position: absolute;
   top: 12px;
   right: 11px;
+}
+
+.panel-body {
+  position: relative;
 }

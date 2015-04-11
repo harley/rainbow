@@ -1,6 +1,6 @@
 class Reservation < ActiveRecord::Base
   belongs_to :item
-  belongs_to :reserver, class_name: 'Member', foreign_key: 'reserver_id'
+  belongs_to :reserver, class_name: 'Member', foreign_key: 'reserver_id', inverse_of: :reservations
   belongs_to :checked_out_by, class_name: 'User'
   belongs_to :checked_in_by, class_name: 'User'
 
@@ -24,6 +24,11 @@ class Reservation < ActiveRecord::Base
 
   def check_out_by!(user)
     self.checked_out_at = Time.now
-    item.save if save # compute available_count
+    item.save if save # recompute available_count
+  end
+
+  def check_in_by!(user)
+    self.checked_in_at = Time.now
+    item.save if save # recompute available_count
   end
 end

@@ -3,9 +3,9 @@
     = render 'available_count', item: item
     = link_to item do
       - if item.filepicker_url?
-        = filepicker_image_tag item.filepicker_url, w: 160, h: 160, fit: 'clip'
+        = filepicker_image_tag item.filepicker_url, w: 167, h: 127, fit: 'clip'
       - else
-        = image_tag "http://placehold.it/210x160&text=No+Image!", class: 'list-group-image'
+        = image_tag "http://placehold.it/167x127&text=No+Image!", class: 'list-group-image'
     .caption
       = render 'item_preview', item: item
     div

@@ -6,4 +6,4 @@ h1 Check Out
     = @reservation.reserver
   .reservation-check-out-notes
     ' Notes:
-  = f.submit "Check Out", class: 'btn btn-primary'
+  = f.submit "Check Out / Borrow", class: 'btn btn-danger', data: {disable_with: "Checking out..."}

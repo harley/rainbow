@@ -1,47 +1,23 @@
 .row
-  .col-sm-6.item
-    .thumbnail
-      = render 'available_count', item: @item
-      = link_to @item do
-        - if @item.filepicker_url?
-          = filepicker_image_tag @item.filepicker_url, w: 160, h: 160, fit: 'clip'
-        - else
-          = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
-      .caption
-        = render 'item_preview', item: @item
-        .item-extras
-          .item-summary
-            strong> Summary:
-            br
-            = simple_format @item.summary
-        .list-group-item-footer
-          => link_to 'Edit', edit_item_path(@item), class: 'btn btn-default btn-sm'
-          => link_to 'Reserve', new_item_reservation_path(@item), class: 'btn btn-primary btn-sm'
-  .col-sm-6
-    h1 Reservations
-    table.table
-      thead
-        tr
-          td Borrower
-          td Due date
-          td Checked out at
-          td Checked out by
-          td Checked in at
-          td Checked in by
-      tbody
-        - @item.reservations.each do |reservation|
-          tr class=('active' if reservation.active?)
-            td = reservation.reserver.full_name
-            td.timestamp = reservation.due_date.to_s(:day_long)
-            td
-              - if reservation.checked_out_at
-                = reservation.checked_out_at.to_s(:am_pm_long)
-              - else
-                = link_to "Check Out", edit_check_out_path(reservation), class: 'btn btn-danger'
-            td = reservation.checked_out_by
-            td
-              - if reservation.checked_in_at
-                = reservation.checked_in_at.to_s(:am_pm_long)
-              - elsif reservation.checked_out?
-                = link_to "Check In", edit_check_out_path(reservation), class: 'btn btn-success'
-            td = reservation.checked_in_by
+  .col-sm-4.no-padding
+    .panel.panel-primary
+      .panel-heading.text-center
+        span.label.label-info = @item.kind
+      .panel-body
+        .thumbnail
+          = render 'available_count', item: @item
+          = link_to @item do
+            - if @item.filepicker_url?
+              = filepicker_image_tag @item.filepicker_url, w: 160, h: 160, fit: 'clip'
+            - else
+              = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
+          .caption
+            = render 'item_preview', item: @item
+            = render 'item_extras', item: @item
+            .list-group-item-footer
+              => link_to 'Reserve', new_item_reservation_path(@item), class: 'btn btn-primary btn-block', data: {disable_with: 'Please wait...'}
+            - if policy(:item).edit?
+              .list-group-item-admin style="margin-top:10px"
+                => link_to 'Edit', edit_item_path(@item), class: 'btn btn-default btn-sm'
+  .col-sm-8
+    = render 'reservations/reservations', reservations: @item.reservations

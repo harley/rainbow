@@ -4,7 +4,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin? || record.added_by_id == user.id
+    user && (user.admin? || record.added_by_id == user.id)
   end
 
   class Scope < Scope

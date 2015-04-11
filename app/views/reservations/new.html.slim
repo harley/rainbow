@@ -2,11 +2,18 @@ h1 Hello
 
 .row
   .col-sm-6.col-md-4
-    = simple_form_for [:item, @reservation] do |f|
-      = f.association :item
-      = f.association :reserver
-      = f.input :due_date, as: :date, html5: true
-      = f.submit "Reserve", class: 'btn btn-primary btn-block'
+    .panel.panel-default
+      .panel-heading
+        h1.panel-title
+          ' Reserve
+          span.text-primary
+            = link_to @reservation.item, @reservation.item, target: '_blank'
+      .panel-body
+        = simple_form_for [:item, @reservation] do |f|
+          = f.association :item, disabled: true
+          = f.association :reserver, hint: "type some characters to find a member."
+          = f.input :due_date, as: :date, html5: true, hint: "#{time_vs_now(f.object.due_date)}."
+          = f.submit "Reserve", class: 'btn btn-primary btn-block', data: {disable_with: "Reserving..."}
 
 javascript:
   $('select').selectize();

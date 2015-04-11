@@ -10,4 +10,15 @@ class CheckInController < ApplicationController
       redirect_to @reservation
     end
   end
+
+  def update
+    @reservation = Reservation.find params[:id]
+    @reservation.check_in_by!(current_user)
+    if @reservation.errors.empty?
+      flash[:success] = "Checked in successfully"
+      redirect_to @reservation.item
+    else
+      render action: 'edit'
+    end
+  end
 end

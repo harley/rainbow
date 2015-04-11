@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :added_items, class_name: 'Item', foreign_key: 'added_by_id', dependent: :nullify, inverse_of: false
+  has_one :member, dependent: :nullify
+  has_many :reservations, through: :member
 
   # TODO: add role to users
   def admin?

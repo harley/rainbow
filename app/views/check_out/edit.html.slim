@@ -1,0 +1,9 @@
+h1 Check Out
+
+= simple_form_for @reservation, url: check_out_path(@reservation) do |f|
+  = render 'items/item_preview', item: @reservation.item
+  .reservation-reserver
+    = @reservation.reserver
+  .reservation-check-out-notes
+    ' Notes:
+  = f.submit "Check Out", class: 'btn btn-primary'

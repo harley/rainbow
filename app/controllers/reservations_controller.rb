@@ -1,7 +1,10 @@
 class ReservationsController < ApplicationController
   def index
-    # TODO
     redirect_to '/admin/reservation'
+  end
+
+  def show
+    @reservation = Reservation.find params[:id]
   end
 
   def new
@@ -15,7 +18,7 @@ class ReservationsController < ApplicationController
     @reservation = @item.reservations.build reservation_params
     if @reservation.save
       # TODO: change this path
-      redirect_to item_reservations_path(@item)
+      redirect_to @item
     else
       render action: 'new'
     end

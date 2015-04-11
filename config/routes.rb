@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :reservations, only: [:show, :index]
+  resources :check_out, only: [:index, :edit, :update]
+  resources :check_in, only: [:index, :edit, :update]
+
   resources :members
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :items do

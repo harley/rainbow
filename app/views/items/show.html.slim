@@ -15,7 +15,8 @@
             br
             = simple_format @item.summary
         .list-group-item-footer
-          => link_to 'edit', edit_item_path(@item), class: 'btn btn-default btn-sm'
+          => link_to 'Edit', edit_item_path(@item), class: 'btn btn-default btn-sm'
+          => link_to 'Reserve', new_item_reservation_path(@item), class: 'btn btn-primary btn-sm'
   .col-sm-6
     h1 Reservations
     table.table

@@ -1,4 +1,8 @@
 class Item < ActiveRecord::Base
+  belongs_to :subject
+  belongs_to :school_level
+  belongs_to :category
+
   extend Enumerize
   enumerize :kind, in: [:book], default: :book
 

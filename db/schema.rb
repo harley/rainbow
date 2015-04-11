@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411102347) do
+ActiveRecord::Schema.define(version: 20150411170208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
@@ -30,10 +36,16 @@ ActiveRecord::Schema.define(version: 20150411102347) do
     t.integer  "quantity",        default: 1, null: false
     t.integer  "added_by_id"
     t.integer  "available_count"
+    t.integer  "category_id"
+    t.integer  "subject_id"
+    t.integer  "school_level_id"
   end
 
   add_index "items", ["added_by_id"], name: "index_items_on_added_by_id", using: :btree
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["code"], name: "index_items_on_code", using: :btree
+  add_index "items", ["school_level_id"], name: "index_items_on_school_level_id", using: :btree
+  add_index "items", ["subject_id"], name: "index_items_on_subject_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id"
@@ -60,6 +72,18 @@ ActiveRecord::Schema.define(version: 20150411102347) do
 
   add_index "reservations", ["item_id"], name: "index_reservations_on_item_id", using: :btree
 
+  create_table "school_levels", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -79,5 +103,8 @@ ActiveRecord::Schema.define(version: 20150411102347) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "school_levels"
+  add_foreign_key "items", "subjects"
   add_foreign_key "reservations", "items"
 end

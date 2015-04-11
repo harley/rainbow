@@ -11,6 +11,9 @@
   = f.input :code
   = f.input :publisher
   = f.input :quantity
+  = f.association :subject
+  = f.association :school_level
+  = f.association :category
   = f.submit nil, class: 'btn btn-default'
 
 = filepicker_js_include_tag

@@ -1,8 +1,8 @@
-.row
+.row.item
   .col-sm-4.no-padding
     .panel.panel-primary
       .panel-heading.text-center
-        span.label.label-info = @item.kind
+        span.label.label-info.panel-title = @item.kind.upcase
       .panel-body
         .thumbnail
           = render 'available_count', item: @item
@@ -14,10 +14,10 @@
           .caption
             = render 'item_preview', item: @item
             = render 'item_extras', item: @item
-            .list-group-item-footer
-              => link_to 'Reserve', new_item_reservation_path(@item), class: 'btn btn-primary btn-block', data: {disable_with: 'Please wait...'}
-            - if policy(:item).edit?
-              .list-group-item-admin style="margin-top:10px"
-                => link_to 'Edit', edit_item_path(@item), class: 'btn btn-default btn-sm'
+      .panel-footer
+        => link_to 'Reserve', new_item_reservation_path(@item), class: 'btn btn-info btn-lg btn-block', data: {disable_with: 'Please wait...'}
+      - if policy(:item).edit?
+        .panel-footer
+          => link_to 'Edit', edit_item_path(@item), class: 'btn btn-default'
   .col-sm-8
     = render 'reservations/reservations', reservations: @item.reservations

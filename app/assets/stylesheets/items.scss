@@ -46,3 +46,9 @@
 .panel-body {
   position: relative;
 }
+.item .panel-body > .thumbnail {
+  margin-bottom: 0;
+}
+.item-summary p:last-child {
+  margin-bottom: 0;
+}

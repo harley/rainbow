@@ -16,6 +16,8 @@ class Item < ActiveRecord::Base
   validates :title, :quantity, presence: true
   # validates :code, uniqueness: {allow_blank: false}, presence: true
 
+  has_many :reservations, dependent: :destroy
+
   def added_by
     User.find_by_id(added_by_id)
   end

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 
+  reserver_id: 1
+  checked_out_by_id: 1
+  checked_in_by_id: 1
+  checked_out_at: 2015-04-11 15:46:10
+  checked_in: 
+  due_date: 2015-04-11 15:46:10
+
+two:
+  item_id: 
+  reserver_id: 1
+  checked_out_by_id: 1
+  checked_in_by_id: 1
+  checked_out_at: 2015-04-11 15:46:10
+  checked_in: 
+  due_date: 2015-04-11 15:46:10

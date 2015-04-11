@@ -1,0 +1,9 @@
+h1 Hello
+
+.row
+  .col-sm-6.col-md-4
+    = simple_form_for [:item, @reservation] do |f|
+      = f.association :item
+      = f.association :reserver
+      = f.input :due_date, as: :date, html5: true
+      = f.submit "Reserve", class: 'btn btn-primary btn-block'

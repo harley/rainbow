@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :members
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :items
+  resources :items do
+    resources :reservations
+  end
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

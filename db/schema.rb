@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411074809) do
+ActiveRecord::Schema.define(version: 20150411084610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,20 @@ ActiveRecord::Schema.define(version: 20150411074809) do
 
   add_index "members", ["sid"], name: "index_members_on_sid", using: :btree
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "reserver_id"
+    t.integer  "checked_out_by_id"
+    t.integer  "checked_in_by_id"
+    t.datetime "checked_out_at"
+    t.datetime "checked_in_at"
+    t.datetime "due_date"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "reservations", ["item_id"], name: "index_reservations_on_item_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -64,4 +78,5 @@ ActiveRecord::Schema.define(version: 20150411074809) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "reservations", "items"
 end

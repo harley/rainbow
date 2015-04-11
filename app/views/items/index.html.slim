@@ -22,19 +22,15 @@
     - @items.each do |item|
       .col-xs-6.col-sm-4.col-md-3.col-lg-2.item
         .thumbnail
-          - if item.filepicker_url?
-            = filepicker_image_tag item.filepicker_url, w: 160, h: 160, fit: 'clip'
-          - else
-            = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
+          = link_to item do
+            - if item.filepicker_url?
+              = filepicker_image_tag item.filepicker_url, w: 160, h: 160, fit: 'clip'
+            - else
+              = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
           .caption
-            h4.list-group-item-heading = item.title
-            .list-group-item-text
-              .item-author
-                ' by #{item.author}
-              .item-publisher
-                ' Publisher: #{item.publisher}
-            div
-              = link_to 'edit', edit_item_path(item), class: 'btn btn-default btn-sm'
+            = render 'item_preview', item: item
+          div
+            = link_to 'edit', edit_item_path(item), class: 'btn btn-default btn-sm'
 
 coffee:
   $('#list').click ->

@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   enumerize :kind, in: [:book], default: :book
 
   searchable do
-    text :title
+    text :title, boost: 5
     text :kind
     text :author
     text :summary
@@ -14,4 +14,6 @@ class Item < ActiveRecord::Base
 
   validates :title, presence: true
   # validates :code, uniqueness: {allow_blank: false}, presence: true
+
+  belongs_to :added_by, class_name: 'User', inverse_of: :added_items
 end

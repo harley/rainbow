@@ -12,8 +12,19 @@ class Item < ActiveRecord::Base
     text :publisher
   end
 
-  validates :title, presence: true
+  validates :title, :quantity, presence: true
   # validates :code, uniqueness: {allow_blank: false}, presence: true
 
-  belongs_to :added_by, class_name: 'User', inverse_of: :added_items
+  def added_by
+    User.find_by_id(added_by_id)
+  end
+
+  # rails_admin_import
+  def before_import_save(row, map)
+    # Your custom special sauce
+  end
+
+  def after_import_save(row, map)
+    # Your custom special sauce
+  end
 end

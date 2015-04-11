@@ -1,0 +1,9 @@
+h1 Items added by you
+= render 'search'
+= render 'list_vs_grid'
+
+.items
+  .row.list-group
+    - @items.each do |item|
+      = render 'item', item: item
+

@@ -2,4 +2,11 @@ h1 Update Item
 
 .row
   .col-sm-5.col-md-4
+    - if @item.added_by == current_user
+      .alert.alert-info
+        button.close data-dismiss="alert" aria-label="Close"
+          span aria-hidden="true"
+          | &times;
+        | You added this on #{@item.created_at.to_s(:am_pm_long)}
+
     = render 'form', item: @item

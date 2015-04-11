@@ -1,4 +1,10 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate_user!, only: [:added_by_me]
+
+  def added_by_me
+    @items = current_user.added_items
+  end
+
   def index
     @search = Item.search do
       fulltext params[:search]
@@ -10,6 +16,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    authorize @item
   end
 
   def create
@@ -23,6 +30,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find params[:id]
+    authorize @item
   end
 
   def update

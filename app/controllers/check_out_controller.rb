@@ -5,6 +5,10 @@ class CheckOutController < ApplicationController
 
   def edit
     @reservation = Reservation.find params[:id]
+    if @reservation.checked_out?
+      flash[:error] = "This reservation has been checked out before (by #{@reservation.checked_out_by})"
+      redirect_to @reservation
+    end
   end
 
   def update
@@ -13,7 +17,7 @@ class CheckOutController < ApplicationController
     @reservation.checked_out_by = current_user
     if @reservation.save
       flash[:success] = "Checked out successfully."
-      redirect_to @reservation
+      redirect_to @reservation.item
     else
       render action: 'edit'
     end

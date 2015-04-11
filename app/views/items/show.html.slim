@@ -24,12 +24,20 @@
         tr
           td Borrower
           td Due date
+          td Checked out at
           td Checked out by
+          td Checked in at
           td Checked in by
       tbody
         - @item.reservations.each do |reservation|
-          tr
+          tr class=('active' if reservation.active?)
             td = reservation.reserver.full_name
             td.timestamp = reservation.due_date.to_s(:day_long)
             td
-            td
+              - if reservation.checked_out_at
+                = reservation.checked_out_at.to_s(:am_pm_long)
+              - else
+                = link_to "Check Out", edit_check_out_path(reservation), class: 'btn btn-danger'
+            td = reservation.checked_out_by
+            td = reservation.checked_in_at.to_s(:am_pm_long) if reservation.checked_in_at
+            td = reservation.checked_in_by

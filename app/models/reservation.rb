@@ -9,4 +9,16 @@ class Reservation < ActiveRecord::Base
   scope :checked_out, -> {where('checked_out_at IS NOT NULL')}
   scope :not_checked_in, -> {where('checked_in_at IS NULL')}
   scope :active, -> {checked_out.not_checked_in}
+
+  def checked_out?
+    !!checked_out_at
+  end
+
+  def checked_in?
+    !!checked_in_at
+  end
+
+  def active?
+    checked_out? && checked_in_at.nil?
+  end
 end

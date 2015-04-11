@@ -5,5 +5,9 @@ class CheckInController < ApplicationController
 
   def edit
     @reservation = Reservation.find params[:id]
+    if @reservation.checked_in?
+      flash[:error] = "This reservation has been checked in before (by #{@reservation.checked_out_by})"
+      redirect_to @reservation
+    end
   end
 end

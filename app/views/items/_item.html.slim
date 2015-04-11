@@ -1,0 +1,14 @@
+.col-xs-6.col-sm-4.col-md-3.col-lg-2.item
+  .thumbnail
+    = render 'available_count', item: item
+    = link_to item do
+      - if item.filepicker_url?
+        = filepicker_image_tag item.filepicker_url, w: 160, h: 160, fit: 'clip'
+      - else
+        = image_tag "http://placehold.it/210x160&text=No+Image!", class: 'list-group-image'
+    .caption
+      = render 'item_preview', item: item
+    div
+      => link_to 'Add To Cart', edit_item_path(item), class: 'btn btn-default btn-sm'
+      => link_to 'edit', edit_item_path(item), class: 'btn btn-default btn-sm'
+

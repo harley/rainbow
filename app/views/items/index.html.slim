@@ -1,39 +1,12 @@
-.row
-  .col-sm-4
-    = form_tag items_path, method: 'get' do
-      p
-        .input-group
-          = text_field_tag :search, params[:search], placeholder: 'Search...', class: 'form-control'
-          .input-group-btn
-            = submit_tag "Search", name: nil, class: 'btn btn-default'
+h1 Catalog
 
-
-.btn-group
-  a#list.btn.btn-default
-    span.glyphicon.glyphicon-th-list>
-    | List
-  a#grid.btn.btn-default.active
-    span.glyphicon.glyphicon-th>
-    | Grid
-
+= render 'search'
+= render 'list_vs_grid'
 
 .items
   .row.list-group
     - @items.each do |item|
-      .col-xs-6.col-sm-4.col-md-3.col-lg-2.item
-        .thumbnail
-          = render 'available_count', item: item
-          = link_to item do
-            - if item.filepicker_url?
-              = filepicker_image_tag item.filepicker_url, w: 160, h: 160, fit: 'clip'
-            - else
-              = image_tag "http://placehold.it/210x160&text=No+Image!", class: 'list-group-image'
-          .caption
-            = render 'item_preview', item: item
-          div
-            => link_to 'Add To Cart', edit_item_path(item), class: 'btn btn-default btn-sm'
-            => link_to 'edit', edit_item_path(item), class: 'btn btn-default btn-sm'
-
+      = render 'item', item: item
 coffee:
   $('#list').click ->
     $('.items .item').addClass('list-group-item')

@@ -5,4 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :added_items, class_name: 'Item', foreign_key: 'added_by_id', dependent: :nullify, inverse_of: false
+
+  # TODO: add role to users
+  def admin?
+    true
+  end
+
+  def to_s
+    email
+  end
 end

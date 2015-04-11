@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :items do
     resources :reservations
+    collection do
+      get :added_by_me
+    end
   end
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

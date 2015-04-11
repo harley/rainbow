@@ -39,5 +39,9 @@
               - else
                 = link_to "Check Out", edit_check_out_path(reservation), class: 'btn btn-danger'
             td = reservation.checked_out_by
-            td = reservation.checked_in_at.to_s(:am_pm_long) if reservation.checked_in_at
+            td
+              - if reservation.checked_in_at
+                = reservation.checked_in_at.to_s(:am_pm_long)
+              - elsif reservation.checked_out?
+                = link_to "Check In", edit_check_out_path(reservation), class: 'btn btn-success'
             td = reservation.checked_in_by

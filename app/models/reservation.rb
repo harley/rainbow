@@ -21,4 +21,9 @@ class Reservation < ActiveRecord::Base
   def active?
     checked_out? && checked_in_at.nil?
   end
+
+  def check_out_by!(user)
+    self.checked_out_at = Time.now
+    item.save if save # compute available_count
+  end
 end

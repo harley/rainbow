@@ -13,9 +13,8 @@ class CheckOutController < ApplicationController
 
   def update
     @reservation = Reservation.find params[:id]
-    @reservation.checked_out_at = Time.now
-    @reservation.checked_out_by = current_user
-    if @reservation.save
+    @reservation.check_out_by!(current_user)
+    if @reservation.errors.empty?
       flash[:success] = "Checked out successfully."
       redirect_to @reservation.item
     else

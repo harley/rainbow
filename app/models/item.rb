@@ -34,7 +34,10 @@ class Item < ActiveRecord::Base
   end
 
   def check_available_count
-    remaining = quantity - reservations.active.count
-    self.available_count = remaining
+    self.available_count = compute_remaining
+  end
+
+  def compute_remaining
+    quantity - reservations.active.count
   end
 end

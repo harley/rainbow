@@ -10,6 +10,7 @@ class Item < ActiveRecord::Base
     integer :number_of_pages
     text :code
     text :publisher
+    time :created_at
   end
 
   validates :title, :quantity, presence: true

@@ -30,7 +30,8 @@
           .caption
             = render 'item_preview', item: item
           div
-            = link_to 'edit', edit_item_path(item), class: 'btn btn-default btn-sm'
+            => link_to 'edit', edit_item_path(item), class: 'btn btn-default btn-sm'
+            span.badge = item.quantity
 
 coffee:
   $('#list').click ->

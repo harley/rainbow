@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   def index
     @search = Item.search do
       fulltext params[:search]
+      order_by(:created_at, :desc)
     end
 
     @items = @search.results

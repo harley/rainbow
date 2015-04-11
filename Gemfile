@@ -36,9 +36,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'sunspot_solr'
 end
-gem "blacklight"
-gem 'blacklight-marc', '~> 5.0'
-
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'slim-rails', '~> 3.0.1'

@@ -37,28 +37,11 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
-    autoprefixer-rails (5.1.8)
-      execjs
-      json
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    blacklight (5.12.1)
-      bootstrap-sass (~> 3.2)
-      deprecation
-      kaminari (>= 0.15)
-      nokogiri (~> 1.6)
-      rails (>= 3.2.6, < 5)
-      rsolr (~> 1.0.11)
-    blacklight-marc (5.10.0)
-      blacklight (~> 5.10)
-      marc (>= 0.4.3, < 1.1)
-      rails
-    bootstrap-sass (3.3.4.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
     builder (3.2.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -68,8 +51,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
-    deprecation (0.2.2)
-      activesupport
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -115,9 +96,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    marc (1.0.0)
-      scrub_rb (>= 1.0.1, < 2)
-      unf
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
@@ -211,7 +189,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    scrub_rb (1.0.1)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -256,9 +233,6 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.6)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -267,8 +241,6 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
-  blacklight
-  blacklight-marc (~> 5.0)
   coffee-rails (~> 4.1.0)
   devise
   devise-guests (~> 0.3)

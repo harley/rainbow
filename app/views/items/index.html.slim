@@ -1,7 +1,11 @@
-= form_tag items_path, method: 'get' do
-  p
-    = text_field_tag :search, params[:search]
-    = submit_tag "Search", name: nil
+.row
+  .col-sm-4
+    = form_tag items_path, method: 'get' do
+      p
+        .input-group
+          = text_field_tag :search, params[:search], placeholder: 'Search...', class: 'form-control'
+          .input-group-btn
+            = submit_tag "Search", name: nil, class: 'btn btn-default'
 
 
 .btn-group
@@ -16,16 +20,29 @@
 .items
   .row.list-group
     - @items.each do |item|
-      .col-sm-4.item
-        = image_tag "http://placehold.it/100&text=Coming+soon!", class: 'list-group-image'
-        h4.list-group-item-heading = item.title
-        p.list-group-item-text = item.summary
+      .col-xs-6.col-sm-4.col-md-3.col-lg-2.item
+        .thumbnail
+          - if item.filepicker_url?
+            = filepicker_image_tag item.filepicker_url, w: 160, h: 160, fit: 'clip'
+          - else
+            = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
+          .caption
+            h4.list-group-item-heading = item.title
+            .list-group-item-text
+              .item-author
+                ' by #{item.author}
+              .item-publisher
+                ' Publisher: #{item.publisher}
+            div
+              = link_to 'edit', edit_item_path(item), class: 'btn btn-default btn-sm'
 
 coffee:
   $('#list').click ->
     $('.items .item').addClass('list-group-item')
     $(this).addClass('active').siblings().removeClass('active')
+    $('.list-group.row').removeClass('row')
 
   $('#grid').click ->
     $('.items .item').removeClass('list-group-item')
     $(this).addClass('active').siblings().removeClass('active')
+    $('.list-group').addClass('row')

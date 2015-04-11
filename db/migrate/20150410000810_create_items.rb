@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :author
       t.text :summary
       t.integer :number_of_pages
-      t.string :image
+      t.string :filepicker_url
       t.string :code, index: true, unique: true
       t.string :publisher
 

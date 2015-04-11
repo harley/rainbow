@@ -1,0 +1,15 @@
+= simple_form_for item do |f|
+  - if f.object.filepicker_url?
+    .thumbnail
+      = filepicker_image_tag f.object.filepicker_url, w: 160, h: 160, fit: 'clip'
+  = f.filepicker_field :filepicker_url, class: 'btn btn-default', button_text: "Change Image"
+  = f.input :title
+  = f.input :kind
+  = f.input :author
+  = f.input :summary
+  = f.input :number_of_pages
+  = f.input :code
+  = f.input :publisher
+  = f.submit nil, class: 'btn btn-default'
+
+= filepicker_js_include_tag

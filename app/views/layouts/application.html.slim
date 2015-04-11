@@ -10,7 +10,8 @@ html
     .navbar.navbar-default.navbar-static-top
       .container-fluid
         .navbar-header
-          a.navbar-brand Rainbow
+          a.navbar-brand href="/"
+            = image_tag 'rainbow.jpg'
         .navbar-collapse.collapse
           ul.nav.navbar-nav.navbar-right.root_links
             li = link_to "Admin Dashboard", '/admin'
@@ -22,7 +23,8 @@ html
             ul.nav.nav-pills.nav-stacked
               li.dropdown-header Navigation
               li class=('active' if current_page?(items_path))
-                = link_to "Items", items_path
-              li: a Link2
+                = link_to "Books", items_path
+              li class=('active' if current_page?(new_item_path))
+                = link_to "New Book", new_item_path
         .col-sm-9.col-md-10
           = yield

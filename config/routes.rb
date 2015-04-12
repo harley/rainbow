@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :check_in, only: [:index, :edit, :update]
 
   resources :members
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/superadmin', as: 'rails_admin'
   resources :items do
     resources :reservations
     collection do
@@ -61,9 +61,9 @@ Rails.application.routes.draw do
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  namespace :admin do
+      # Directs /admin/products/* to Admin::ProductsController
+      # (app/controllers/admin/products_controller.rb)
+    resources :members, only: [:index, :show]
+  end
 end

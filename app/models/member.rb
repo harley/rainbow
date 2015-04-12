@@ -7,4 +7,16 @@ class Member < ActiveRecord::Base
   def to_s
     "#{full_name} (#{english_name})"
   end
+
+  def borrowed_items
+    reservations.active
+  end
+
+  def returned_items
+    reservations.checked_in
+  end
+
+  def reserved_items
+    reservations.not_checked_out
+  end
 end

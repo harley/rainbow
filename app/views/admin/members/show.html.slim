@@ -1,0 +1,14 @@
+- if @member
+  .row
+    .col-sm-9
+      = render 'reservations/reservations', member: @member, reservations: @member.reservations
+    .col-sm-3
+      .panel.panel-primary
+        .panel-heading
+          h1.panel-title Member profile
+        .panel-body
+          = render 'members/form', member: @member
+- else
+  h1 My Reservations
+  .alert.alert-warning
+    | You do not have a library member profile yet. Please contact Admin.

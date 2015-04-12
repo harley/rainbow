@@ -1,0 +1,22 @@
+table.table
+  thead
+    tr
+      th ID
+      th Name
+      th English name
+      th Reservations
+      th Borrowed #
+      th Returned #
+      th Reserved #
+  tbody
+    - @members.each do |member|
+      tr
+        td = member.id
+        td = link_to member, [:admin, member]
+        td = member.english_name
+        td = member.reservations.count
+        td = member.borrowed_items.count
+        td = member.returned_items.count
+        td = member.reserved_items.count
+
+

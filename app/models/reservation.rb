@@ -24,11 +24,13 @@ class Reservation < ActiveRecord::Base
 
   def check_out_by!(user)
     self.checked_out_at = Time.now
+    self.checked_out_by = user
     item.save if save # recompute available_count
   end
 
   def check_in_by!(user)
     self.checked_in_at = Time.now
+    self.checked_in_by = user
     item.save if save # recompute available_count
   end
 end

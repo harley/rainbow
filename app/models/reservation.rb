@@ -62,8 +62,9 @@ class Reservation < ActiveRecord::Base
   end
 
   def self.sort(column, direction)
-    column ||= 'updated_at'
+    column    ||= 'updated_at'
     direction ||= 'DESC'
+    raise "Invalid direction #{direction}" unless %w(ASC DESC).include?(direction.to_s.upcase)
     case column
     when 'item_title'
       joins(:item).order("items.title #{direction}")

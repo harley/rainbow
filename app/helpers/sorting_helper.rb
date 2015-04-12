@@ -8,11 +8,11 @@ module SortingHelper
     blk.call(url_for(sort: column), direction)
   end
 
-  def sorting_link(column, label = nil)
+  def sorting_link(column, label = nil, options = {})
     column = column.to_s
     label ||= column.humanize
     sorting_url(column) do |url, direction|
-      link = link_to(label, url)
+      link = link_to(label, url, options)
 
       if column == sorting_column || column[1..-1] == sorting_column
         down = " <i class='glyphicon glyphicon-chevron-down'></i>".html_safe

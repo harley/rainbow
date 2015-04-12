@@ -1,6 +1,6 @@
 class Admin::MembersController < Admin::BaseController
   def index
-    @members = Member.order('created_at DESC')
+    @members = Member.search(params[:q]).sort(sorting_column, sorting_direction)
   end
 
   def show

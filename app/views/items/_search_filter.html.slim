@@ -1,19 +1,23 @@
-- [:author, :publisher].each do |field|
-  .panel class=(params[field] ? 'panel-info' : 'panel-default')
-    .panel-heading.collapse-toggle data-toggle="collapse" data-target="#facet-#{field}" aria-expanded="true"
-      h5.panel-title
-        a href="#" data-no-turbolink="true" = field.to_s.humanize
-    .panel-collapse.facet-content.collapse.in id="facet-#{field}"
-      .panel-body
-        ul.list-unstyled.facet-values style="margin-bottom:0"
-          - search.facet(field).rows.each do |row|
-            li
-              span.facet-label
-                => link_to row.value, url_for(params.merge(field => row.value))
-                - if params[field]
-                  = link_to params.merge(field => nil), class: 'remove' do
-                    span.glyphicon.glyphicon-remove
-                    span.sr-only
-                      | [remove]
-              span.facet-count = row.count
+.panel-group
+  - Item.facet_fields.each do |field|
+    .panel class=(params[field] ? 'panel-info' : 'panel-default')
+      .panel-heading.collapse-toggle [
+        data-toggle="collapse" data-target="#facet-#{field}" aria-expanded="true"
+        class=('collapsed' unless params[field])
+      ]
+        h5.panel-title
+          a href="#" data-no-turbolink="true" = field.to_s.humanize
+      .panel-collapse.facet-content.collapse id="facet-#{field}" class=('in' if params[field])
+        .panel-body
+          ul.list-unstyled.facet-values style="margin-bottom:0"
+            - search.facet(field).rows.each do |row|
+              li
+                span.facet-label
+                  => link_to row.value, url_for(params.merge(field => row.value))
+                  - if params[field]
+                    = link_to params.merge(field => nil), class: 'remove' do
+                      span.glyphicon.glyphicon-remove
+                      span.sr-only
+                        | [remove]
+                span.facet-count = row.count
 

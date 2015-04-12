@@ -19,6 +19,9 @@ class Item < ActiveRecord::Base
     # for facets
     string :author
     string :publisher
+    string(:subject) { subject.try(:name) }
+    string(:category) { category.try(:name) }
+    string(:school_level) { school_level.try(:name) }
   end
 
   validates :title, :quantity, presence: true
@@ -54,6 +57,6 @@ class Item < ActiveRecord::Base
   end
 
   def self.facet_fields
-    [:author, :publisher]
+    %i(author publisher subject category school_level)
   end
 end

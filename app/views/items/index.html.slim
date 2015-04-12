@@ -1,8 +1,19 @@
 h1 Catalog
 
-- if params[:search]
-  p.text-warning
+- if params[:search] || !searched_item_facets.empty?
+  .well.well-sm
+    .pull-right
+      = link_to 'Start over', url_for(search: nil), class: 'btn btn-text btn-sm'
     | Searching for: #{params[:search]}
+
+    - searched_item_facets.each do |field|
+      .btn-group
+        span.btn.btn-default.btn-sm.disabled
+          => field.to_s.humanize
+          span.glyphicon.glyphicon-menu-right>
+          span.text-primary = params[field]
+        a.btn.btn-default.btn-sm.remove href=(url_for(field => nil))
+          span.glyphicon.glyphicon-remove
 
 = render 'list_vs_grid'
 

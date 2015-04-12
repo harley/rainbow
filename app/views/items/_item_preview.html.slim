@@ -3,6 +3,6 @@
   .list-group-item-text
     .item-author
       span.text-muted by
-      =< link_to item.author, items_path(search: item.author)
+      =< link_to item.author, items_path(author: item.author)
     .item-publisher
       =< link_to item.publisher, items_path(search: item.publisher)

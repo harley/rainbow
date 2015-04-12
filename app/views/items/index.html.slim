@@ -1,6 +1,5 @@
 h1 Catalog
 
-
 - if params[:search]
   p.text-warning
     | Searching for: #{params[:search]}
@@ -11,6 +10,7 @@ h1 Catalog
   .row.list-group
     - @items.each do |item|
       = render 'item', item: item
+
 coffee:
   $('#list').click ->
     $('.items .item').addClass('list-group-item')

@@ -15,6 +15,10 @@ class Item < ActiveRecord::Base
     text :code
     text :publisher
     time :created_at
+
+    # for facets
+    string :author
+    string :publisher
   end
 
   validates :title, :quantity, presence: true
@@ -47,5 +51,9 @@ class Item < ActiveRecord::Base
 
   def to_s
     title
+  end
+
+  def self.facet_fields
+    [:author, :publisher]
   end
 end

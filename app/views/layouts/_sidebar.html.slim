@@ -12,11 +12,14 @@
       = link_to reservations_path do
         span.hidden-xs Return A Book
         =< fa_icon "barcode lg", class: 'pull-right'
-    li style="padding-left: 5px; padding-right:5px"
-      = render 'shared/search', path: items_path
+  div style="padding-left: 5px; padding-right:5px"
+    = render 'shared/search', path: items_path
+    p
+    - if @search
+      = render 'items/search_filter', search: @search
 
-    - if current_admin
-      li: a.btn.disabled
-      li.dropdown-header Admin
-      = render 'layouts/admin_lis'
-
+- if current_admin
+  ul.nav.nav-stacked
+    li: a.btn.disabled
+    li.dropdown-header Admin
+    = render 'layouts/admin_lis'

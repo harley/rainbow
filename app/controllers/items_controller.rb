@@ -9,6 +9,10 @@ class ItemsController < ApplicationController
     @search = Item.search do
       fulltext params[:search]
       order_by(:created_at, :desc)
+      Item.facet_fields.each do |field|
+        facet(field)
+        with(field, params[field]) if params[field].present?
+      end
     end
 
     @items = @search.results

@@ -73,3 +73,45 @@
     font-size: .8em;
   }
 }
+
+.facet-values {
+  display: table;
+  width: 100%;
+  li {
+    display: table-row;
+  }
+  .facet-label {
+    display: table-cell;
+    padding-right: 1em;
+    text-indent: -15px;
+    padding-left: 15px;
+    padding-bottom: 6px;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+  .facet-count {
+    display: table-cell;
+    vertical-align: top;
+    text-align: right;
+  }
+  .remove {
+    text-indent: 12px;
+  }
+}
+
+.panel-heading.collapse-toggle .panel-title:after {
+  font-family: 'Glyphicons Halflings';
+  content: "\e114";
+  float: right;
+  color: grey;
+  font-size: 0.8em;
+  line-height: normal;
+}
+.panel-heading.collapse-toggle.collapsed .panel-title:after {
+  content: "\e080";
+}

@@ -5,11 +5,14 @@ class Reservation < ActiveRecord::Base
   belongs_to :checked_in_by, class_name: 'User'
 
   validates :reserver, presence: true
-  scope :not_checked_out, -> {where('checked_out_at IS NULL')}
   scope :checked_out, -> {where('checked_out_at IS NOT NULL')}
-  scope :not_checked_in, -> {where('checked_in_at IS NULL')}
   scope :checked_in, -> {where('checked_in_at IS NOT NULL')}
-  scope :active, -> {checked_out.not_checked_in}
+  scope :not_checked_out, -> {where('checked_out_at IS NULL')}
+  scope :not_checked_in, -> {where('checked_in_at IS NULL')}
+
+  scope :reserved, -> {not_checked_out}
+  scope :borrowed, -> {checked_out.not_checked_in}
+  scope :returned, -> {checked_in}
 
   def checked_out?
     !!checked_out_at
@@ -19,7 +22,7 @@ class Reservation < ActiveRecord::Base
     !!checked_in_at
   end
 
-  def active?
+  def reserved?
     checked_out? && checked_in_at.nil?
   end
 

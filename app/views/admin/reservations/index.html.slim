@@ -1,0 +1,12 @@
+h1 Reservations
+
+.btn-group
+  .btn.btn-default
+    ' Reserved
+    span.badge = @reserved.count
+  .btn.btn-default
+    ' Borrowed
+    span.badge = @borrowed.count
+  .btn.btn-default
+    ' Returned
+    span.badge = @returned.count

@@ -2,8 +2,9 @@ table.table
   thead
     tr
       th ID
-      th Name
+      th Member Name
       th English name
+      th Account
       th Reservations
       th Borrowed #
       th Returned #
@@ -14,6 +15,9 @@ table.table
         td = member.id
         td = link_to member, [:admin, member]
         td = member.english_name
+        td
+          - if member.user
+            = link_to member.user, "/superadmin/user/#{member.user_id}", target: '_blank'
         td = member.reservations.count
         td = member.borrowed_items.count
         td = member.returned_items.count

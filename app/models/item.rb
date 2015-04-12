@@ -42,7 +42,7 @@ class Item < ActiveRecord::Base
   end
 
   def compute_remaining
-    quantity - reservations.active.count
+    quantity - reservations.reserved.count
   end
 
   def to_s

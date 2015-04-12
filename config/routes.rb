@@ -65,5 +65,6 @@ Rails.application.routes.draw do
       # Directs /admin/products/* to Admin::ProductsController
       # (app/controllers/admin/products_controller.rb)
     resources :members, only: [:index, :show]
+    resources :reservations, only: [:index]
   end
 end

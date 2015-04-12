@@ -8,15 +8,15 @@ class Member < ActiveRecord::Base
     "#{full_name} (#{english_name})"
   end
 
-  def borrowed_items
-    reservations.active
+  def borrowed
+    reservations.borrowed
   end
 
-  def returned_items
-    reservations.checked_in
+  def returned
+    reservations.returned
   end
 
-  def reserved_items
-    reservations.not_checked_out
+  def reserved
+    reservations.reserved
   end
 end

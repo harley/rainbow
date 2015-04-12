@@ -1,3 +1,9 @@
-// Place all the styles related to the Reservations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.reservation-reserved {
+  background-color: $brand-warning;
+}
+.reservation-borrowed {
+  background-color: $brand-info;
+}
+.reservation-returned {
+  background-color: $gray-light;
+}

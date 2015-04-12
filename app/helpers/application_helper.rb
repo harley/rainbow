@@ -13,10 +13,14 @@ module ApplicationHelper
   end
 
   def time_vs_now(a)
-    if a > Time.now
-      time_ago_in_words(a) + ' from now'
-    else
-      time_ago_in_words(a) + ' ago'
+    if a
+      content_tag :span, title: a, data: {utime: a.to_i} do
+        if a > Time.zone.now
+          time_ago_in_words(a) + ' from now'
+        else
+          time_ago_in_words(a) + ' ago'
+        end
+      end
     end
   end
   # def markdown(text)

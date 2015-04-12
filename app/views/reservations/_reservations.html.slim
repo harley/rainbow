@@ -16,7 +16,7 @@
         th Checked in by
     tbody
       - reservations.each do |reservation|
-        tr class=('active' if reservation.reserved?)
+        tr class="reservation-#{reservation.status}"
           td = reservation.member.full_name
           td.timestamp = reservation.due_date.to_s(:day_long)
           td

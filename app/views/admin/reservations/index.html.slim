@@ -1,27 +1,38 @@
 h1 Reservations
 
 .btn-group
-  .btn.btn-default
+  .btn.btn-default.reservation-reserved
     ' Reserved
     span.badge = @reservations.reserved.count
-  .btn.btn-default
+  .btn.btn-default.reservation-borrowed
     ' Borrowed
     span.badge = @reservations.borrowed.count
-  .btn.btn-default
+  .btn.btn-default.reservation-returned
     ' Returned
     span.badge = @reservations.returned.count
 
-table.table
+table.table.table-condensed
   thead
-    tr
+    tr.text-smaller
       th Item
       th Member
       th Status
+      th Due date
+      th Checked out at
+      th Checked out by
+      th Checked in at
+      th Checked in by
+      th Updated at
   tbody
     - @reservations.each do |reservation|
-      tr
+      = content_tag_for :tr, reservation
         td = link_to reservation.item, reservation.item
         td = link_to reservation.member, reservation.member
-        td = reservation.status
-
-
+        td: span.label class="reservation-#{reservation.status}"
+          = reservation.status
+        td.timestamp = time_vs_now(reservation.due_date)
+        td.timestamp = time_vs_now(reservation.checked_out_at)
+        td = reservation.checked_out_by
+        td.timestamp = time_vs_now(reservation.checked_in_at)
+        td = reservation.checked_in_by
+        td.timestamp = time_vs_now(reservation.updated_at)

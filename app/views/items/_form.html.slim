@@ -4,17 +4,23 @@
       = filepicker_image_tag f.object.filepicker_url, w: 160, h: 160, fit: 'clip'
   = f.filepicker_field :filepicker_url, class: 'btn btn-default', button_text: "Change Image"
   = f.input :title
-  = f.input :kind
-  = f.association :category, input_html: {class: 'selectize'}
-  = f.association :school_level, input_html: {class: 'selectize'}
-  = f.association :subject, input_html: {class: 'selectize'}
+  .row
+    .col-sm-6
+      = f.input :kind
+    .col-sm-6
+      = f.association :category, input_html: {class: 'selectize'}
+  .row
+    .col-sm-6
+      = f.association :school_level, input_html: {class: 'selectize'}
+    .col-sm-6
+      = f.association :subject, input_html: {class: 'selectize'}
   = f.input :author
   = f.input :summary
   = f.input :number_of_pages
   = f.input :code
   = f.input :publisher
   = f.input :quantity
-  = f.submit nil, class: 'btn btn-default'
+  = f.submit nil, class: 'btn btn-primary btn-block'
 
 = filepicker_js_include_tag
 

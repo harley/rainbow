@@ -10,9 +10,9 @@
         span.hidden-xs New Book
         =< fa_icon "leanpub lg", class: 'pull-right'
     li
-      = link_to '/' do
+      = link_to reservations_path do
         span.hidden-xs Return A Book
         =< fa_icon "barcode lg", class: 'pull-right'
-    li style="padding-left: 5px"
+    li style="padding-left: 5px; padding-right:5px"
       = render 'items/search'
 

@@ -1,6 +1,10 @@
 .panel.panel-primary
   .panel-heading
-    h1.panel-title Reservations
+    h1.panel-title
+      ' Reservations
+      - if defined?(member)
+        ' by
+        = member
   table.table
     thead.text-smaller
       tr

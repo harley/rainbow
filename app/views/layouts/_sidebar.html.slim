@@ -1,0 +1,18 @@
+.sidebar-nav
+  ul.nav.nav-stacked
+    /li.dropdown-header Menu
+    li class=('active' if current_page?(items_path))
+      = link_to items_path do
+        span.hidden-xs Catalog
+        =< fa_icon "university lg", class: 'pull-right'
+    li class=('active' if current_page?(new_item_path))
+      = link_to new_item_path do
+        span.hidden-xs New Book
+        =< fa_icon "leanpub lg", class: 'pull-right'
+    li
+      = link_to '/' do
+        span.hidden-xs Return A Book
+        =< fa_icon "barcode lg", class: 'pull-right'
+    li style="padding-left: 5px"
+      = render 'items/search'
+

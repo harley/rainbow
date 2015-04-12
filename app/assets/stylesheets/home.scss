@@ -19,3 +19,17 @@ a.navbar-brand {
 .text-smaller {
   font-size: .8em;
 }
+@media (max-width: $screen-sm-max) {
+  .sidebar-nav {
+    margin-left: -10px;
+  }
+}
+
+.sidebar-nav {
+  min-width: 44px;
+
+  .nav-stacked > li > a {
+    height: 2.4em;
+    line-height: 1.2em;
+  }
+}

@@ -1,15 +1,18 @@
 h1 Reservations
 
 .btn-group
-  .btn.btn-default.reservation-reserved
+  a.btn.btn-default.reservation-reserved href=(url_for(q: 'reserved')) class=('active' if params[:q] == 'reserved')
     ' Reserved
-    span.badge = @reservations.reserved.count
-  .btn.btn-default.reservation-borrowed
+    span.badge = Reservation.reserved.count
+  a.btn.btn-default.reservation-borrowed href=(url_for(q: 'borrowed')) class=('active' if params[:q] == 'borrowed')
     ' Borrowed
-    span.badge = @reservations.borrowed.count
-  .btn.btn-default.reservation-returned
+    span.badge = Reservation.borrowed.count
+  a.btn.btn-default.reservation-returned href=(url_for(q: 'returned')) class=('active' if params[:q] == 'returned')
     ' Returned
-    span.badge = @reservations.returned.count
+    span.badge = Reservation.returned.count
+  - if params[:q].present?
+    a.btn.btn-default href=(url_for(q: nil))
+      i.glyphicon.glyphicon-remove
 
 table.table.table-condensed
   thead

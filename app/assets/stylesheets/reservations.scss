@@ -5,5 +5,5 @@
   background-color: $brand-info;
 }
 .reservation-returned {
-  background-color: $gray-light;
+  background-color: lighten($gray-base, 70%);
 }

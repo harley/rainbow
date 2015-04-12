@@ -1,5 +1,5 @@
 class Admin::ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.search(params[:q])
   end
 end

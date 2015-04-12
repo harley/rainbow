@@ -49,4 +49,15 @@ class Reservation < ActiveRecord::Base
       'returned'
     end
   end
+
+  def self.search(query)
+    # scope
+    case query
+    when 'reserved', 'borrowed', 'returned'
+      send(query)
+    else
+      # not yet supported. return all
+      all
+    end
+  end
 end

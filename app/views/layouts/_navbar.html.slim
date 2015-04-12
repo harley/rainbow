@@ -20,8 +20,7 @@
           li = link_to 'My Reservations', reservations_path
           - if current_user.admin?
             li.divider
-            li = link_to "Manage Members", admin_members_path
-            li = link_to "Manage Reservations", admin_reservations_path
+            = render 'layouts/admin_lis'
           li.divider
           li = link_to "Logout", destroy_user_session_path
     - else

@@ -9,6 +9,7 @@
     thead.text-smaller
       tr
         th Borrower
+        th Status
         th Due date
         th Checked out at
         th Checked out by
@@ -16,8 +17,11 @@
         th Checked in by
     tbody
       - reservations.each do |reservation|
-        tr class="reservation-#{reservation.status}"
+        = content_tag_for :tr, reservation do
           td = reservation.member.full_name
+          td
+            span.label class="reservation-#{reservation.status}"
+              = reservation.status
           td.timestamp = reservation.due_date.to_s(:day_long)
           td
             - if reservation.checked_out_at

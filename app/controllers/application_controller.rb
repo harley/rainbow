@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  helper_method :current_admin
+
+  protected
+  def current_admin
+    current_user.try(:admin?) && current_user
+  end
 
   private
   def user_not_authorized

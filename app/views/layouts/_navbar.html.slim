@@ -8,7 +8,6 @@
     span.icon-bar
 #navbar-right.navbar-collapse.collapse
   ul.nav.navbar-nav.navbar-right.root_links
-    li = link_to "Admin Dashboard", '/admin'
     - if user_signed_in?
       li.btn-group
         a.dropdown-toggle data-toggle="dropdown" href="#" area-expanded="false"

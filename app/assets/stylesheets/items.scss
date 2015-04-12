@@ -7,15 +7,22 @@
 
 .item.list-group-item
 {
-  /*reset the grid float and width and add a background for fun */
   float: none;
   width: 100%;
   .thumbnail {
     border: none;
     text-align: left;
   }
+  .panel-footer {
+    background: none;
+    border: none;
+  }
 }
 /* give the image a left float in the list view */
+.item > .thumbnail > a {
+  height: 126px;
+  display: inline-block;
+}
 .item.list-group-item > .thumbnail > a {
   width: 167px;
   float: left;
@@ -51,4 +58,18 @@
 }
 .item-summary p:last-child {
   margin-bottom: 0;
+}
+.item-preview > h4.list-group-item-heading {
+  font-size: 1.1em;
+  height: 40px;
+}
+.item > .thumbnail {
+  margin-bottom: 0;
+  padding: 0;
+}
+.item-preview {
+  .item-publisher {
+    height: 1em;
+    font-size: .8em;
+  }
 }

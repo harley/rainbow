@@ -13,7 +13,8 @@
               = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
           .caption
             = render 'item_preview', item: @item
-            = render 'item_extras', item: @item
+      .panel-footer
+        = render 'item_extras', item: @item
       .panel-footer
         => link_to 'Reserve', new_item_reservation_path(@item), class: 'btn btn-info btn-lg btn-block', data: {disable_with: 'Please wait...'}
       - if policy(:item).edit?

@@ -1,5 +1,10 @@
 h1 Catalog
 
+
+- if params[:search]
+  p.text-warning
+    | Searching for: #{params[:search]}
+
 = render 'list_vs_grid'
 
 .items

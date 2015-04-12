@@ -2,8 +2,7 @@
   h4.list-group-item-heading = item.title
   .list-group-item-text
     .item-author
-      strong> by
-      = link_to item.author, items_path(search: item.author)
+      span.text-muted by
+      =< link_to item.author, items_path(search: item.author)
     .item-publisher
-      strong> Publisher:
-      = link_to item.publisher, items_path(search: item.publisher)
+      =< link_to item.publisher, items_path(search: item.publisher)

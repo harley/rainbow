@@ -89,9 +89,6 @@ GEM
       railties (>= 3.2, < 5.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
-    globalize (5.0.1)
-      activemodel (>= 4.2.0, < 4.3)
-      activerecord (>= 4.2.0, < 4.3)
     haml (4.0.6)
       tilt
     hashie (3.4.1)
@@ -272,7 +269,7 @@ DEPENDENCIES
   dotenv-rails
   enumerize (~> 0.11.0)
   filepicker-rails
-  globalize (~> 5.0.1)
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-google-oauth2

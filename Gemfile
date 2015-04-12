@@ -53,4 +53,5 @@ gem "rails_admin_import", path: 'vendor/gems/rails_admin_import'
 gem "selectize-rails", '~> 0.12.0'
 gem 'stamp'
 gem 'pundit'
-gem 'globalize', '~> 5.0.1'
+# gem 'globalize', '~> 5.0.1'
+gem "font-awesome-rails"

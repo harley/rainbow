@@ -1,14 +1,19 @@
+h1 Members
+
+.row: .col-sm-4
+  = render 'shared/search', path: admin_members_path
+p
 table.table
   thead
     tr.active.text-smaller
-      th = sorting_link :id
+      th ID
       th = sorting_link :full_name
       th = sorting_link :english_name
       th = sorting_link :user_email
-      th = sorting_link :reservation_count, nil, class: 'btn disabled btn-xs'
-      th = sorting_link :reserved_count, nil, class: 'btn disabled btn-xs'
-      th = sorting_link :borrowed_count, nil, class: 'btn disabled btn-xs'
-      th = sorting_link :returned_count, nil, class: 'btn disabled btn-xs'
+      th = sorting_link :reservation_count
+      th = sorting_link :reserved_count
+      th = sorting_link :borrowed_count
+      th = sorting_link :returned_count
   tbody
     - @members.each do |member|
       tr

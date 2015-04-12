@@ -1,0 +1,5 @@
+= form_tag path, method: 'get' do
+  .input-group
+    = text_field_tag :search, current_page?(path) ? params[:search] : nil, placeholder: 'Search...', class: 'form-control'
+    .input-group-btn
+      = button_tag fa_icon('search'), name: nil, class: 'btn btn-default'

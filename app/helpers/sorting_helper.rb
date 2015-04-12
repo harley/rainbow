@@ -5,7 +5,7 @@ module SortingHelper
     column = column.to_s
     column.prepend('-') if direction == :asc
 
-    blk.call(url_for(sort: column), direction)
+    blk.call(url_for(params.merge(sort: column)), direction)
   end
 
   def sorting_link(column, label = nil, options = {})

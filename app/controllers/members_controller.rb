@@ -1,4 +1,8 @@
 class MembersController < ApplicationController
+  def show
+    raise "NOT YET IMPLEMENTED"
+  end
+
   def edit
     @member = Member.find params[:id]
   end

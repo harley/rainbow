@@ -6,15 +6,13 @@
         ' by
         = member
   table.table
-    thead.text-smaller
+    thead
       tr
         th Borrower
         th Status
         th Due date
-        th Checked out at
-        th Checked out by
-        th Checked in at
-        th Checked in by
+        th Checked out
+        th Checked in
     tbody
       - reservations.each do |reservation|
         = content_tag_for :tr, reservation do
@@ -25,13 +23,21 @@
           td.timestamp = reservation.due_date.to_s(:day_long)
           td
             - if reservation.checked_out_at
-              = reservation.checked_out_at.to_s(:am_pm_long)
+              .timestamp
+                = time_vs_now(reservation.checked_out_at)
+              - if reservation.checked_out_by
+                .text-smaller
+                  ' by
+                  = reservation.checked_out_by
             - else
               = link_to "Check Out", edit_check_out_path(reservation), class: 'btn btn-danger'
-          td = reservation.checked_out_by
           td
             - if reservation.checked_in_at
-              = reservation.checked_in_at.to_s(:am_pm_long)
+              .timestamp
+                = time_vs_now(reservation.checked_in_at)
+              - if reservation.checked_in_by
+                .text-smaller
+                  ' by
+                  = reservation.checked_in_by
             - elsif reservation.checked_out?
               = link_to "Return", edit_check_in_path(reservation), class: 'btn btn-success'
-          td = reservation.checked_in_by

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :check_out, only: [:index, :edit, :update]
   resources :check_in, only: [:index, :edit, :update]
 
-  resources :members
+  resources :members, except: [:show, :destroy]
   mount RailsAdmin::Engine => '/superadmin', as: 'rails_admin'
   resources :items do
     resources :reservations

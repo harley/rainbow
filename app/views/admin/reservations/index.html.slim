@@ -16,21 +16,21 @@ h1 Reservations
 p
 table.table.table-condensed
   thead
-    tr.text-smaller.active
+    tr.active
       th = sorting_link :item_title, "Item"
       th = sorting_link :member_name, "Member"
       th Status
-      th = sorting_link :due_date
-      th = sorting_link :checked_out_at
-      th = sorting_link :checked_out_by
-      th = sorting_link :checked_in_at
-      th = sorting_link :checked_in_by
-      th = sorting_link :updated_at
+      th.text-smaller = sorting_link :due_date
+      th.text-smaller = sorting_link :checked_out_at
+      th.text-smaller = sorting_link :checked_out_by
+      th.text-smaller = sorting_link :checked_in_at
+      th.text-smaller = sorting_link :checked_in_by
+      th.text-smaller = sorting_link :updated_at
   tbody
     - @reservations.each do |reservation|
       = content_tag_for :tr, reservation
         td = link_to reservation.item, reservation.item
-        td = link_to reservation.member, reservation.member
+        td = link_to reservation.member, [:admin, reservation.member]
         td: span.label class="reservation-#{reservation.status}"
           = reservation.status
         td.timestamp = time_vs_now(reservation.due_date)

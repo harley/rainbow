@@ -11,7 +11,7 @@ h1 Hello
       .panel-body
         = simple_form_for [:item, @reservation] do |f|
           = f.association :item, disabled: true
-          = f.association :reserver, hint: "type some characters to find a member."
+          = f.association :member, hint: "type some characters to find a member."
           = f.input :due_date, as: :date, html5: true, hint: "#{time_vs_now(f.object.due_date)}."
           = f.submit "Reserve", class: 'btn btn-primary btn-block', data: {disable_with: "Reserving..."}
 

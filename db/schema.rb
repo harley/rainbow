@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411170208) do
+ActiveRecord::Schema.define(version: 20150412152407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150411170208) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
@@ -60,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150411170208) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer  "item_id"
-    t.integer  "reserver_id"
+    t.integer  "member_id"
     t.integer  "checked_out_by_id"
     t.integer  "checked_in_by_id"
     t.datetime "checked_out_at"
@@ -78,11 +80,15 @@ ActiveRecord::Schema.define(version: 20150411170208) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "school_levels", ["name"], name: "index_school_levels_on_name", unique: true, using: :btree
+
   create_table "subjects", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "subjects", ["name"], name: "index_subjects_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

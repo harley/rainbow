@@ -1,10 +1,10 @@
 class Reservation < ActiveRecord::Base
   belongs_to :item
-  belongs_to :reserver, class_name: 'Member', foreign_key: 'reserver_id', inverse_of: :reservations
+  belongs_to :member
   belongs_to :checked_out_by, class_name: 'User'
   belongs_to :checked_in_by, class_name: 'User'
 
-  validates :reserver, presence: true
+  validates :member, presence: true
   scope :checked_out, -> {where('checked_out_at IS NOT NULL')}
   scope :checked_in, -> {where('checked_in_at IS NOT NULL')}
   scope :not_checked_out, -> {where('checked_out_at IS NULL')}
@@ -36,5 +36,17 @@ class Reservation < ActiveRecord::Base
     self.checked_in_at = Time.now
     self.checked_in_by = user
     item.save if save # recompute available_count
+  end
+
+  def status
+    if checked_out_at.nil?
+      'reserved'
+    # already checked out
+    elsif checked_in_at.nil?
+      'borrowed'
+    # already checked in
+    else
+      'returned'
+    end
   end
 end

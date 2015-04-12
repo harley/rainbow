@@ -3,10 +3,25 @@ h1 Reservations
 .btn-group
   .btn.btn-default
     ' Reserved
-    span.badge = @reserved.count
+    span.badge = @reservations.reserved.count
   .btn.btn-default
     ' Borrowed
-    span.badge = @borrowed.count
+    span.badge = @reservations.borrowed.count
   .btn.btn-default
     ' Returned
-    span.badge = @returned.count
+    span.badge = @reservations.returned.count
+
+table.table
+  thead
+    tr
+      th Item
+      th Member
+      th Status
+  tbody
+    - @reservations.each do |reservation|
+      tr
+        td = link_to reservation.item, reservation.item
+        td = link_to reservation.member, reservation.member
+        td = reservation.status
+
+

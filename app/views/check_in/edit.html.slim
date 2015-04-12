@@ -2,8 +2,8 @@ h1 Return
 
 = simple_form_for @reservation, url: check_in_path(@reservation) do |f|
   = render 'items/item_preview', item: @reservation.item
-  .reservation-reserver
-    = @reservation.reserver
+  .reservation-member
+    = @reservation.member
   p.reservation-check-in-notes
     ' Notes:
   = f.submit "Return!", class: 'btn btn-success'

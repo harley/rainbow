@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
   belongs_to :user
-  has_many :reservations, dependent: :destroy, foreign_key: 'reserver_id', inverse_of: :reserver
+  has_many :reservations, dependent: :destroy
 
   validates :sid, uniqueness: {allow_blank: true}
 

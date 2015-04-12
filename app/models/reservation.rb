@@ -60,4 +60,27 @@ class Reservation < ActiveRecord::Base
       all
     end
   end
+
+  def self.sort(column, direction)
+    column ||= 'updated_at'
+    direction ||= 'DESC'
+    case column
+    when 'item_title'
+      joins(:item).order("items.title #{direction}")
+    when 'member_name'
+      joins(:member).order("members.full_name #{direction}")
+    when 'member_english_name'
+      joins(:member).order("members.english_name #{direction}")
+    when 'checked_out_by'
+      joins("LEFT JOIN users ON users.id = reservations.checked_out_by_id").order("users.email #{direction}")
+    when 'checked_in_by'
+      joins("LEFT JOIN users ON users.id = reservations.checked_in_by_id").order("users.email #{direction}")
+    else
+      if column_names.include?(column)
+        order("#{column} #{direction}")
+      else
+        all
+      end
+    end
+  end
 end

@@ -13,19 +13,19 @@ h1 Reservations
   - if params[:q].present?
     a.btn.btn-default href=(url_for(q: nil))
       i.glyphicon.glyphicon-remove
-
+p
 table.table.table-condensed
   thead
-    tr.text-smaller
-      th Item
-      th Member
+    tr.text-smaller.active
+      th = sorting_link :item_title, "Item"
+      th = sorting_link :member_name, "Member"
       th Status
-      th Due date
-      th Checked out at
-      th Checked out by
-      th Checked in at
-      th Checked in by
-      th Updated at
+      th = sorting_link :due_date
+      th = sorting_link :checked_out_at
+      th = sorting_link :checked_out_by
+      th = sorting_link :checked_in_at
+      th = sorting_link :checked_in_by
+      th = sorting_link :updated_at
   tbody
     - @reservations.each do |reservation|
       = content_tag_for :tr, reservation

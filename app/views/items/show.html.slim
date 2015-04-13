@@ -22,4 +22,4 @@
           span.label.label-default Admin
           =<> link_to 'Edit', edit_item_path(@item), class: 'btn btn-default btn-sm'
   .col-sm-8
-    = render 'reservations/reservations', reservations: @item.reservations
+    = render 'reservations/reservations', reservations: @item.reservations, hide_item: true

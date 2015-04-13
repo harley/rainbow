@@ -1,3 +1,6 @@
+ruby:
+  hide_member ||= false
+  hide_item   ||= false
 .panel.panel-primary
   .panel-heading
     h1.panel-title
@@ -8,7 +11,10 @@
   table.table
     thead
       tr
-        th Borrower
+        - unless hide_member
+          th Borrower
+        - unless hide_item
+          th Item
         th Status
         th Due date
         th Checked out
@@ -16,7 +22,10 @@
     tbody
       - reservations.each do |reservation|
         = content_tag_for :tr, reservation do
-          td = reservation.member.full_name
+          - unless hide_member
+            td = reservation.member.full_name
+          - unless hide_item
+            td = link_to reservation.item, reservation.item
           td
             span.label class="reservation-#{reservation.status}"
               = reservation.status

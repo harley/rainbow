@@ -4,7 +4,7 @@
       = link_to items_path do
         span.hidden-xs Catalog
         =< fa_icon "university lg", class: 'pull-right'
-    - unless reader?
+    - if current_admin
       li class=('active' if current_page?(new_item_path))
         = link_to new_item_path do
           span.hidden-xs New Book

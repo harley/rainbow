@@ -4,7 +4,8 @@ h1 Catalog
   .well.well-sm
     .pull-right
       = link_to 'Start over', url_for(search: nil), class: 'btn btn-text btn-sm'
-    | Searching for: #{params[:search]}
+    | Searching for:
+    span.btn.btn-text = params[:search]
 
     - searched_item_facets.each do |field|
       .btn-group

@@ -29,6 +29,6 @@ class ApplicationController < ActionController::Base
   end
 
   def layout_per_role
-    current_role == 'reader' ? 'reader' : 'application'
+    current_role == 'admin' ? 'admin' : 'reader'
   end
 end

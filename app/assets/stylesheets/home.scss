@@ -15,6 +15,10 @@ a.navbar-brand {
   color: $brand-primary !important;
 }
 
+.container-fluid .navbar-brand.brand-text {
+  margin-left: 0;
+}
+
 .label.label-translucent {
   background-color: rgba(#4873b8, .4);
 }

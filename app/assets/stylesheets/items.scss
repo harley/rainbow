@@ -21,6 +21,7 @@
 /* give the image a left float in the list view */
 .item > .thumbnail > a {
   height: 126px;
+  display: block;
 }
 .item.list-group-item > .thumbnail > a {
   width: 167px;

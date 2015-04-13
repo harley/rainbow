@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
         facet(field)
         with(field, params[field]) if params[field].present?
       end
+      paginate(page: params[:page], per_page: params[:per_page])
     end
 
     @items = @search.results

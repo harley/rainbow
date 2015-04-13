@@ -15,7 +15,11 @@ h1 Catalog
         a.btn.btn-default.btn-sm.remove href=(url_for(field => nil))
           span.glyphicon.glyphicon-remove
 
-= render 'list_vs_grid'
+.pull-right
+  = render 'list_vs_grid'
+
+= paginate @items
+.page-entries-info = page_entries_info @items
 
 .items
   .row.list-group

@@ -14,7 +14,7 @@
       li.btn-group
         a.dropdown-toggle data-toggle="dropdown" href="#" area-expanded="false"
           => current_user.email
-          span.label class=(current_role == 'admin' ? 'label-default' : 'label-info')
+          span.label> class=(current_role == 'admin' ? 'label-default' : 'label-info')
             = current_role
           span.caret
         ul.dropdown-menu role="menu"

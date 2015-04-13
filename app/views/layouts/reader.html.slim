@@ -1,13 +1,13 @@
 doctype html
 html
   = render 'layouts/head'
-  body
-    .navbar.navbar-default.navbar-static-top
-      .container
+  body.reader
+    .container.main-wrapper
+      .navbar.navbar-default.navbar-static-top
         = render 'layouts/navbar'
-    .container
-      .row
-        .col-xs-2.col-sm-3.col-md-2.no-padding
-          = render 'layouts/sidebar'
-        .col-xs-10.col-sm-9.col-md-10
-          = render 'layouts/main_body'
+      .main-container
+        .row
+          .col-xs-1.col-sm-3.col-md-2.less-padding.sidebar
+            = render 'layouts/sidebar'
+          .col-xs-11.col-sm-9.col-md-10
+            = render 'layouts/main_body'

@@ -10,6 +10,7 @@ a.navbar-brand {
   }
   &.brand-text {
     padding-top:15px;
+    padding-left: 0;
   }
   color: $brand-primary !important;
 }
@@ -21,14 +22,12 @@ a.navbar-brand {
 .no-padding {
   padding: 0;
 }
+.less-padding {
+  padding: 0 5px;
+}
 
 .text-smaller {
   font-size: .8em;
-}
-@media (max-width: $screen-sm-max) {
-  .sidebar-nav {
-    margin-left: -10px;
-  }
 }
 
 .sidebar-nav {

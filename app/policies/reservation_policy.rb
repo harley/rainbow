@@ -3,6 +3,10 @@ class ReservationPolicy < ApplicationPolicy
     user.try(:admin?)
   end
 
+  def new?
+    user
+  end
+
   class Scope < Scope
     def resolve
       scope

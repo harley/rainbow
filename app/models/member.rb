@@ -52,4 +52,8 @@ class Member < ActiveRecord::Base
   def first_name
     full_name && full_name.split(' ').last
   end
+
+  def short_name
+    english_name.presence || first_name
+  end
 end

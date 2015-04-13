@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   helper_method :current_admin
   helper_method :current_role
+  helper_method :reader?
   layout :layout_per_role
 
   protected
@@ -20,6 +21,10 @@ class ApplicationController < ActionController::Base
   def current_role
     return session[:role] if session[:role]
     session[:role] = current_user.try(:role)
+  end
+
+  def reader?
+    current_role == 'reader'
   end
 
   private

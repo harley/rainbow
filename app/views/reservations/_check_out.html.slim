@@ -2,9 +2,9 @@
   .timestamp
     => time_vs_now(reservation.checked_out_at)
     = notes_indicator(reservation, :check_out_notes)
-  - if reservation.checked_out_by && !defined?(:skip_by)
+  - if reservation.checked_out_by && !defined?(skip_by)
     .text-smaller
       ' by
       = reservation.checked_out_by
 - else
-  = link_to "Check Out", edit_check_out_path(reservation), class: 'btn btn-danger'
+  = link_to "Check Out", edit_check_out_path(reservation), class: 'btn btn-danger btn-xs'

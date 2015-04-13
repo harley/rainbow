@@ -1,20 +1,22 @@
-h1 Hello
-
 .row
-  .col-sm-6.col-md-4
-    .panel.panel-default
+  .col-sm-7.col-md-5.col-lg-4
+    .panel.panel-primary
       .panel-heading
         h1.panel-title
-          ' Reserve
-          span.text-primary
-            = link_to @reservation.item, @reservation.item, target: '_blank'
+          ' Reserve:
+          = link_to @reservation.item, @reservation.item, target: '_blank'
       = simple_form_for [:item, @reservation] do |f|
         .panel-body
-          = f.association :item, disabled: true
-          = f.association :member, hint: "type some characters to find a member."
+          = f.association :item, disabled: true, hint: "Reserving this item (can't change here)."
+          - if reader?
+            = f.association :member, disabled: true, hint: "You can only reserve for yourself."
+            = f.hidden_field :member_id
+          - else
+            = f.association :member, hint: "type some characters to find a member.", input_html: {class: 'selectize'}
           = f.input :due_date, as: :date, html5: true, hint: "#{time_vs_now(f.object.due_date)}.".html_safe
         .panel-footer
-          = f.submit "Reserve", class: "btn btn-lg btn-block reservation-#{@reservation.status}", data: {disable_with: "Reserving..."}
+          = f.submit "Reserve", class: "btn btn-lg btn-block reservation-#{@reservation.status}", data: {disable_with: "Reserving...", toggle: 'tooltip', placement: 'right'}, title: "#{@reservation.item.available_count} copies available."
 
 javascript:
-  $('select').selectize();
+  $('select.selectize').selectize();
+  $('[data-toggle="tooltip"]').tooltip();

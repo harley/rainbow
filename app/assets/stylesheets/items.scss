@@ -109,3 +109,14 @@
 .panel-heading.collapse-toggle.collapsed .panel-title:after {
   content: "\e080";
 }
+
+.list-group > .item {
+  &:hover, &:focus {
+    color: $brand-primary;
+    z-index: 1000;
+    @include box-shadow(0 0 16px);
+    .edit-icon {
+      display: block;
+    }
+  }
+}

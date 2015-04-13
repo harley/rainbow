@@ -27,8 +27,10 @@ ruby:
           - unless hide_item
             td = link_to reservation.item, reservation.item
           td
-            span.label class="reservation-#{reservation.status}"
+            span.label> class="reservation-#{reservation.status}"
               = reservation.status
+            - if reservation.notes.present?
+              span.glyphicon.glyphicon-question-sign data-toggle="popover" data-content=(reservation.notes) title="Notes for this reservation" style="cursor:pointer;top:3px"
           td.timestamp = reservation.due_date.to_s(:day_long)
           td
             - if reservation.checked_out_at
@@ -50,3 +52,6 @@ ruby:
                   = reservation.checked_in_by
             - elsif reservation.checked_out?
               = link_to "Return", edit_check_in_path(reservation), class: 'btn btn-success'
+
+javascript:
+  $('[data-toggle="popover"]').popover()

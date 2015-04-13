@@ -1,6 +1,4 @@
-.panel-body
-  = render 'items/item_preview', item: f.object.item
-  .reservation-member
-    span.text-muted> Borrower:
-    = f.object.member
-  = f.input :notes
+= render 'items/item_preview', item: f.object.item
+p.reservation-member
+  span.text-muted> Borrower:
+  = f.object.member

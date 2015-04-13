@@ -7,6 +7,8 @@ h1 Check Out
         span.label.label-info.panel-title => @reservation.item.kind.upcase
         | Borrow
     = simple_form_for @reservation, url: check_out_path(@reservation) do |f|
-      = render 'check_in/form_body', f: f
+      .panel-body
+        = render 'check_in/form_body', f: f
+        = f.input :check_out_notes
       .panel-footer
-        = f.submit "Check Out", class: 'btn btn-danger btn-lg btn-block', data: {disable_with: "Checking out..."}
+        = f.submit "Check Out!", class: 'btn btn-danger btn-lg btn-block', data: {disable_with: "Checking out..."}

@@ -23,19 +23,19 @@ ruby:
       - reservations.each do |reservation|
         = content_tag_for :tr, reservation do
           - unless hide_member
-            td = reservation.member.full_name
+            td = reservation.member
           - unless hide_item
             td = link_to reservation.item, reservation.item
           td
             span.label> class="reservation-#{reservation.status}"
               = reservation.status
-            - if reservation.notes.present?
-              span.glyphicon.glyphicon-question-sign data-toggle="popover" data-content=(reservation.notes) title="Notes for this reservation" style="cursor:pointer;top:3px"
+            = notes_indicator(reservation, :notes)
           td.timestamp = reservation.due_date.to_s(:day_long)
           td
             - if reservation.checked_out_at
               .timestamp
-                = time_vs_now(reservation.checked_out_at)
+                => time_vs_now(reservation.checked_out_at)
+                = notes_indicator(reservation, :check_out_notes)
               - if reservation.checked_out_by
                 .text-smaller
                   ' by
@@ -45,7 +45,8 @@ ruby:
           td
             - if reservation.checked_in_at
               .timestamp
-                = time_vs_now(reservation.checked_in_at)
+                => time_vs_now(reservation.checked_in_at)
+                = notes_indicator(reservation, :check_in_notes)
               - if reservation.checked_in_by
                 .text-smaller
                   ' by

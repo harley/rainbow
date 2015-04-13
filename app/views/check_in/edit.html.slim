@@ -7,6 +7,12 @@ h1 Check In
         span.label.label-info.panel-title => @reservation.item.kind.upcase
         | Return
     = simple_form_for @reservation, url: check_in_path(@reservation) do |f|
-      = render 'check_in/form_body', f: f
+      .panel-body
+        = render 'check_in/form_body', f: f
+        - if @reservation.check_out_notes.present?
+          .alert.alert-warning
+            strong> Check-out notes:
+            = @reservation.check_out_notes
+        = f.input :check_in_notes
       .panel-footer
-        = f.submit "Return!", class: 'btn btn-success btn-lg btn-block'
+        = f.submit "Return!", class: 'btn btn-success btn-lg btn-block', data: {disable_with: "Returning..."}

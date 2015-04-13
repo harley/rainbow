@@ -1,6 +1,8 @@
 .navbar-header
   a.navbar-brand href="/"
-    = image_tag 'rainbow.jpg'
+    = fa_icon 'university lg'
+  a.navbar-brand.brand-text href="/"
+    = ENV['SITE_NAME'] || 'Rainbow'
   button.navbar-toggle.colapse data-toggle="collapse" data-target="#navbar-right"
     span.sr-only Toggle Navigation
     span.icon-bar

@@ -1,11 +1,17 @@
 a.navbar-brand {
   border: none;
-  padding: 0;
-  margin: 0;
   background-color: inherit;
+  font-size: 2em;
+  padding: 10px;
+  font-weight: bold;
   img {
     max-height: 50px;
+    margin-top: -15px;
   }
+  &.brand-text {
+    padding-top:15px;
+  }
+  color: $brand-primary !important;
 }
 
 .label.label-translucent {

@@ -1,4 +1,4 @@
-.available-counter.text-warning.text-smaller
+.available-counter.text-smaller class=(item.available_count.zero? ? 'text-danger' : 'text-success')
   => item.available_count
   ' available
   ' (#{item.quantity} total)

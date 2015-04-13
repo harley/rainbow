@@ -14,6 +14,10 @@ class Reservation < ActiveRecord::Base
   scope :borrowed, -> {checked_out.not_checked_in}
   scope :returned, -> {checked_in}
 
+  def late?
+    due_date < Date.current
+  end
+
   def checked_out?
     !!checked_out_at
   end

@@ -23,14 +23,15 @@ ruby:
       - reservations.each do |reservation|
         = content_tag_for :tr, reservation do
           - unless hide_member
-            td = reservation.member
+            td = link_to reservation.member, admin_member_path(reservation.member)
           - unless hide_item
             td = link_to reservation.item, reservation.item
           td
             span.label> class="reservation-#{reservation.status}"
               = reservation.status
             = notes_indicator(reservation, :notes)
-          td.timestamp = reservation.due_date.to_s(:day_long)
+          td.timestamp class=(reservation.late? ? 'text-danger' : 'text-success')
+            = time_vs_now(reservation.due_date)
           td = render 'reservations/check_out', reservation: reservation, skip_by: true
           td = render 'reservations/check_in', reservation: reservation, skip_by: true
 

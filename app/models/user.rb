@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_one :member, dependent: :nullify
   has_many :reservations, through: :member
 
+  extend Enumerize
+  enumerize :role, in: [:admin, :reader], default: :admin
   # TODO: add role to users
   def admin?
     true

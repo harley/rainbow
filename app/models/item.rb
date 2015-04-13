@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   belongs_to :category
 
   extend Enumerize
-  enumerize :kind, in: [:book], default: :book
+  enumerize :kind, in: [:book, :media, :unknown], default: :book
 
   searchable do
     text :title, boost: 5

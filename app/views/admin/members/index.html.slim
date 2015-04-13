@@ -3,11 +3,15 @@ h1 Members
 .row: .col-sm-4
   = render 'shared/search', path: admin_members_path
 p
+
+= paginate @members
+.page-entries-info = page_entries_info @members
+
 table.table
   thead
     tr.active.text-smaller
       th ID
-      th = sorting_link :full_name
+      th = sorting_link :first_name
       th = sorting_link :english_name
       th = sorting_link :user_email
       th = sorting_link :reservation_count
@@ -18,7 +22,7 @@ table.table
     - @members.each do |member|
       tr
         td = member.id
-        td = link_to member, [:admin, member]
+        td = link_to member.full_name, [:admin, member]
         td = member.english_name
         td
           - if member.user
@@ -27,3 +31,6 @@ table.table
         td = member.reserved.count
         td = member.borrowed.count
         td = member.returned.count
+
+= paginate @members
+.page-entries-info = page_entries_info @members

@@ -12,6 +12,7 @@ class Member < ActiveRecord::Base
 
     # need string fields for sorting
     string :full_name
+    string :first_name
     string :english_name
     string :sid
     string :user_email
@@ -48,19 +49,7 @@ class Member < ActiveRecord::Base
   def borrowed_count; borrowed.count; end
   def returned_count; returned.count; end
 
-  def self.sort(column, direction)
-    column    ||= 'updated_at'
-    direction ||= 'DESC'
-    raise "Invalid direction #{direction}" unless %w(ASC DESC).include?(direction.to_s.upcase)
-    if column_names.include?(column)
-      order("#{column} #{direction}")
-    else
-      case column
-      when 'user_email'
-        joins("LEFT JOIN users ON users.id = members.user_id").order("users.email #{direction}")
-      else
-        raise "Not yet implemented"
-      end
-    end
+  def first_name
+    full_name && full_name.split(' ').last
   end
 end

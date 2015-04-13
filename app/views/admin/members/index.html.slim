@@ -1,7 +1,7 @@
 h1 Members
 
 .row: .col-sm-4
-  = render 'shared/search', path: admin_members_path
+  = render 'shared/search', path: admin_members_path, placeholder: 'Find a user...'
 p
 
 = paginate @members

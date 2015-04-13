@@ -1,8 +1,10 @@
 .row.item
   .col-sm-4.no-padding
     .panel.panel-primary
-      .panel-heading.text-center
+      .panel-heading
         span.label.label-info.panel-title = @item.kind.upcase
+        - if policy(:item).edit?
+          =<> link_to 'edit', edit_item_path(@item), class: 'close'
       .panel-body
         .thumbnail
           = render 'available_count', item: @item
@@ -17,9 +19,5 @@
         = render 'item_extras', item: @item
       .panel-footer
         = reservation_link 'Reserve', 'reserved', new_item_reservation_path(@item)
-      - if policy(:item).edit?
-        .panel-footer
-          span.label.label-default Admin
-          =<> link_to 'Edit', edit_item_path(@item), class: 'btn btn-default btn-sm'
   .col-sm-8
     = render 'reservations/reservations', reservations: @item.reservations, hide_item: true

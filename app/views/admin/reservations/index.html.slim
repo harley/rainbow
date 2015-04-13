@@ -36,13 +36,9 @@ table.table.table-condensed
             = reservation.status
           = notes_indicator(reservation, :notes)
         td.timestamp = time_vs_now(reservation.due_date)
-        td.timestamp
-          => time_vs_now(reservation.checked_out_at)
-          = notes_indicator(reservation, :check_out_notes)
+        td = render 'reservations/check_out', reservation: reservation
         td = reservation.checked_out_by
-        td.timestamp
-          => time_vs_now(reservation.checked_in_at)
-          = notes_indicator(reservation, :check_in_notes)
+        td = render 'reservations/check_in', reservation: reservation
         td = reservation.checked_in_by
         td.timestamp = time_vs_now(reservation.updated_at)
 

@@ -1,0 +1,10 @@
+- if reservation.checked_in_at
+  .timestamp
+    => time_vs_now(reservation.checked_in_at)
+    = notes_indicator(reservation, :check_in_notes)
+  - if reservation.checked_in_by && !defined?(:skip_by)
+    .text-smaller
+      ' by
+      = reservation.checked_in_by
+- elsif reservation.checked_out?
+  = link_to "Return", edit_check_in_path(reservation), class: 'btn btn-success'

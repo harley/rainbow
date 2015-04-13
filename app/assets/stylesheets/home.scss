@@ -12,7 +12,12 @@ a.navbar-brand {
     padding-top:15px;
     padding-left: 0;
   }
-  color: $brand-primary !important;
+}
+.navbar-default .navbar-brand {
+  color: $brand-primary;
+}
+.navbar-inverse .navbar-brand {
+  color: $gray-lighter;
 }
 
 .container-fluid .navbar-brand.brand-text {

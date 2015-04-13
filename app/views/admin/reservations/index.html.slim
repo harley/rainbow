@@ -20,6 +20,7 @@ table.table.table-condensed
       th = sorting_link :item_title, "Item"
       th = sorting_link :member_name, "Member"
       th Status
+      th = sorting_link :notes
       th.text-smaller = sorting_link :due_date
       th.text-smaller = sorting_link :checked_out_at
       th.text-smaller = sorting_link :checked_out_by
@@ -33,9 +34,16 @@ table.table.table-condensed
         td = link_to reservation.member, [:admin, reservation.member]
         td: span.label class="reservation-#{reservation.status}"
           = reservation.status
+        td
+          - if reservation.notes.present?
+            a data-container="body" data-toggle="popover" data-placement="top" data-content=(reservation.notes)
+              = truncate(reservation.notes, length: 10)
         td.timestamp = time_vs_now(reservation.due_date)
         td.timestamp = time_vs_now(reservation.checked_out_at)
         td = reservation.checked_out_by
         td.timestamp = time_vs_now(reservation.checked_in_at)
         td = reservation.checked_in_by
         td.timestamp = time_vs_now(reservation.updated_at)
+
+javascript:
+  $('[data-toggle="popover"]').popover()

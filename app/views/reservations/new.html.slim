@@ -8,11 +8,12 @@ h1 Hello
           ' Reserve
           span.text-primary
             = link_to @reservation.item, @reservation.item, target: '_blank'
-      .panel-body
-        = simple_form_for [:item, @reservation] do |f|
+      = simple_form_for [:item, @reservation] do |f|
+        .panel-body
           = f.association :item, disabled: true
           = f.association :member, hint: "type some characters to find a member."
-          = f.input :due_date, as: :date, html5: true, hint: "#{time_vs_now(f.object.due_date)}."
+          = f.input :due_date, as: :date, html5: true, hint: "#{time_vs_now(f.object.due_date)}.".html_safe
+        .panel-footer
           = f.submit "Reserve", class: 'btn btn-primary btn-block', data: {disable_with: "Reserving..."}
 
 javascript:

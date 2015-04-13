@@ -56,3 +56,4 @@ gem 'pundit'
 # gem 'globalize', '~> 5.0.1'
 gem "font-awesome-rails"
 gem 'kaminari'
+gem 'puma'

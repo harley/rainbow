@@ -48,4 +48,8 @@ module ApplicationHelper
     end
     info.html_safe
   end
+
+  def reader?
+    current_role == 'reader'
+  end
 end

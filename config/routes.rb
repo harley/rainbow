@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/view_as_admin' => 'admin/members#view_as_admin'
+  get '/view_as_reader' => 'admin/members#view_as_reader'
+
   resources :reservations, only: [:show, :index]
   resources :check_out, only: [:index, :edit, :update]
   resources :check_in, only: [:index, :edit, :update]

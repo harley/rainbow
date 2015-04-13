@@ -8,15 +8,27 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   helper_method :current_admin
+  helper_method :current_role
+  layout :layout_per_role
 
   protected
   def current_admin
     current_user.try(:admin?) && current_user
   end
 
+  # use to determine layout
+  def current_role
+    return session[:role] if session[:role]
+    session[:role] = current_user.try(:role)
+  end
+
   private
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)
+  end
+
+  def layout_per_role
+    current_role == 'reader' ? 'reader' : 'application'
   end
 end

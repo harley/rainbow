@@ -1,9 +1,12 @@
-h1 Return
+h1 Check In
 
-= simple_form_for @reservation, url: check_in_path(@reservation) do |f|
-  = render 'items/item_preview', item: @reservation.item
-  .reservation-member
-    = @reservation.member
-  p.reservation-check-in-notes
-    ' Notes:
-  = f.submit "Return!", class: 'btn btn-success'
+.row: .col-sm-4
+  .panel.panel-primary
+    .panel-heading
+      h4.panel-title
+        span.label.label-info.panel-title => @reservation.item.kind.upcase
+        | Return
+    = simple_form_for @reservation, url: check_in_path(@reservation) do |f|
+      = render 'check_in/form_body', f: f
+      .panel-footer
+        = f.submit "Return!", class: 'btn btn-success btn-lg btn-block'

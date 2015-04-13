@@ -7,7 +7,6 @@
           =<> link_to 'edit', edit_item_path(@item), class: 'close'
       .panel-body
         .thumbnail
-          = render 'available_count', item: @item
           = link_to @item do
             - if @item.filepicker_url?
               = filepicker_image_tag @item.filepicker_url, w: 160, h: 160, fit: 'clip'
@@ -15,9 +14,17 @@
               = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
           .caption
             = render 'item_preview', item: @item
+            = render 'available_count', item: @item
       .panel-footer
         = render 'item_extras', item: @item
       .panel-footer
-        = reservation_link 'Reserve', 'reserved', new_item_reservation_path(@item)
+        - if @item.available_count <= 0
+          button.btn.btn-disabled.btn-block title="Not available. Please wait until someone returns at least a copy." data-toggle="tooltip"
+            | Out of stocked
+        - else
+          = reservation_link 'Reserve', 'reserved', new_item_reservation_path(@item)
   .col-sm-8
     = render 'reservations/reservations', reservations: @item.reservations, hide_item: true
+
+javascript:
+  $('[data-toggle="tooltip"]').tooltip()

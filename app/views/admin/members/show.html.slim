@@ -1,7 +1,7 @@
 - if @member
   .row
     .col-sm-9
-      = render 'reservations/reservations', member: @member, reservations: @member.reservations
+      = render 'reservations/reservations', member: @member, reservations: @member.reservations, hide_member: true
     .col-sm-3
       .panel.panel-primary
         .panel-heading

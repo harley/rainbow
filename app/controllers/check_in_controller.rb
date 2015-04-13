@@ -13,6 +13,7 @@ class CheckInController < ApplicationController
 
   def update
     @reservation = Reservation.find params[:id]
+    @reservation.notes = params[:reservation][:notes]
     @reservation.check_in_by!(current_user)
     if @reservation.errors.empty?
       flash[:success] = "Checked in successfully"

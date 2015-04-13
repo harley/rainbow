@@ -14,7 +14,7 @@ h1 Hello
           = f.association :member, hint: "type some characters to find a member."
           = f.input :due_date, as: :date, html5: true, hint: "#{time_vs_now(f.object.due_date)}.".html_safe
         .panel-footer
-          = f.submit "Reserve", class: 'btn btn-primary btn-block', data: {disable_with: "Reserving..."}
+          = f.submit "Reserve", class: "btn btn-lg btn-block reservation-#{@reservation.status}", data: {disable_with: "Reserving..."}
 
 javascript:
   $('select').selectize();

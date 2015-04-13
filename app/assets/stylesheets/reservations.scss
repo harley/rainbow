@@ -1,9 +1,9 @@
-.reservation-reserved {
-  background-color: $brand-warning;
-}
-.reservation-borrowed {
-  background-color: $brand-info;
-}
-.reservation-returned {
+.reservation-reserved { background-color: $brand-warning; }
+.btn.reservation-reserved { @extend .btn-warning; }
+.reservation-borrowed { background-color: $brand-info; }
+.btn.reservation-borrowed {@extend .btn-info; }
+.reservation-returned { background-color: lighten($gray-base, 70%); }
+.btn.reservation-returned {
+  @extend .btn-default;
   background-color: lighten($gray-base, 70%);
 }

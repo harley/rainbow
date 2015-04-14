@@ -1,0 +1,4 @@
+- if @announcement = Announcement.primary
+  = markdown @announcement.content
+- elsif current_admin
+  = link_to "Set Homepage Announcement", "#{rails_admin_path}/announcement/new"

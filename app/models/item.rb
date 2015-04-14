@@ -31,6 +31,34 @@ class Item < ActiveRecord::Base
 
   before_save :check_available_count
 
+  # override to allow creating subjects on the fly
+  def subject_id=(value)
+    if value && value.match(/\w+/)
+      s = Subject.where(name: value).first_or_create!
+      super(s.id)
+    else
+      super
+    end
+  end
+
+  def school_level_id=(value)
+    if value && value.match(/\w+/)
+      s = SchoolLevel.where(name: value).first_or_create!
+      super(s.id)
+    else
+      super
+    end
+  end
+
+  def category_id=(value)
+    if value && value.match(/\w+/)
+      s = Category.where(name: value).first_or_create!
+      super(s.id)
+    else
+      super
+    end
+  end
+
   def added_by
     User.find_by_id(added_by_id)
   end
@@ -54,6 +82,15 @@ class Item < ActiveRecord::Base
 
   def to_s
     title
+  end
+
+  def hard_tags
+    hash = {}
+    %w(subject category school_level).each do |field|
+      val = send(field)
+      hash[field] = val if val.present?
+    end
+    hash
   end
 
   def self.facet_fields

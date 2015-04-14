@@ -18,6 +18,11 @@
       .panel-footer
         = render 'item_extras', item: @item
       .panel-footer
+        - @item.hard_tags.each do |k, v|
+          span.label.label-info
+            | #{k.humanize}: #{v}
+
+      .panel-footer
         - if @item.available_count <= 0
           button.btn.btn-disabled.btn-block title="Not available. Please wait until someone returns at least a copy." data-toggle="tooltip"
             | Out of stocked

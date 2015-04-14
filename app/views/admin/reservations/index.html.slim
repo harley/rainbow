@@ -14,7 +14,7 @@ h1 Reservations
     a.btn.btn-default href=(url_for(q: nil))
       i.glyphicon.glyphicon-remove
 p
-table.table.table-condensed
+table.table.table-condensed.reflow-on-mobile
   thead
     tr.active
       th = sorting_link :item_title, "Item"
@@ -42,5 +42,10 @@ table.table.table-condensed
         td = reservation.checked_in_by
         td.timestamp = time_vs_now(reservation.updated_at)
 
-javascript:
+coffee:
   $('[data-toggle="popover"]').popover()
+  ths = $('tr > th')
+  trs = $('tbody > tr')
+  trs.map (_, tr) ->
+    $(tr).children().map (i, td) ->
+      $(td).attr('data-title', $(ths[i]).text())

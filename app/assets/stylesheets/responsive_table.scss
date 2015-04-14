@@ -1,0 +1,51 @@
+@media only screen and (max-width: $screen-xs-max) {
+  .reflow-on-mobile {
+    &,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    // Hide table headers (but not display: none;, for accessibility)
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tr { border: 1px solid #ccc; }
+
+    td {
+      // Behave  like a "row"
+      border: none !important;
+      border-bottom: 1px solid #eee !important;
+      position: relative;
+      padding-left: 40% !important;
+      min-height: 32px !important;
+      white-space: normal;
+      text-align:left;
+    }
+
+    td:before {
+      // Now like a table header
+      position: absolute;
+      // Top/left values mimic padding
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align:left;
+      font-weight: bold;
+      color: $gray-light;
+      font-style: normal;
+      font-size: 12px;
+    }
+
+    // Label the data
+    td:before { content: attr(data-title); }
+  }
+}

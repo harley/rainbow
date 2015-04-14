@@ -96,4 +96,18 @@ class Item < ActiveRecord::Base
   def self.facet_fields
     %i(author publisher subject category school_level)
   end
+
+  def self.find_authors(name = nil)
+    search do
+      with(:author, name) if name.present?
+      facet(:author)
+    end.facet(:author).rows.map(&:value)
+  end
+
+  def self.find_publishers(name = nil)
+    search do
+      with(:publisher, name) if name.present?
+      facet(:publisher)
+    end.facet(:publisher).rows.map(&:value)
+  end
 end

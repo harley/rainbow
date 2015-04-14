@@ -1,0 +1,19 @@
+- if @announcement = Announcement.primary
+  = markdown @announcement.content
+- elsif current_admin
+  .alert.alert-warning
+    p You can edit an announcement to show here. We support markdown syntax. 
+    p
+      | You can read about markdown
+      =< link_to 'here.', 'http://dillinger.io/', target: '_blank'
+  = link_to "Set Homepage Announcement", "#{rails_admin_path}/announcement/new", class: 'btn btn-danger'
+- else
+  p.text-danger
+    | Oh no it is so empty here. There are active announcements to show. Please ask admin to post one :)
+  .row
+    .col-sm-4
+      div.thumbnail.text-center
+        = image_tag 'rainbow-large.jpg'
+        caption
+          h3 Project Rainbow by BSA
+          p.text-muted A library management software that you actually love using!

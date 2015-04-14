@@ -23,9 +23,10 @@ module ApplicationHelper
       end
     end
   end
-  # def markdown(text)
-  #   Kramdown::Document.new(text).to_html.html_safe
-  # end
+
+  def markdown(text)
+    Kramdown::Document.new(text).to_html.html_safe
+  end
 
   # override kaminari helper to support sunspot
   def page_entries_info(collection, options = {})

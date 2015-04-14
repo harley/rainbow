@@ -18,14 +18,14 @@
       .col-sm-6
         = f.association :subject, input_html: {class: 'selectize'}
     = f.association :category, input_html: {class: 'selectize'}
-    = f.input :author
+    = f.input :author, collection: Item.find_authors, input_html: {class: 'selectize'}
     = f.input :summary
     .row
       .col-sm-6
         = f.input :number_of_pages
       .col-sm-6
         = f.input :code
-    = f.input :publisher
+    = f.input :publisher, collection: Item.find_publishers, input_html: {class: 'selectize'}
   .panel-footer
     = f.submit nil, class: 'btn btn-primary btn-block btn-lg'
 

@@ -1,4 +1,4 @@
-.col-xs-6.col-sm-4.col-md-3.col-lg-2.item
+.col-xs-6.col-sm-4.col-md-3.col-lg-2.item.item-flow
   .thumbnail
     = link_to item do
       - if item.filepicker_url?
@@ -8,3 +8,9 @@
     .caption
       = render 'item_preview', item: item
       = render 'available_count', item: item
+
+javascript:
+  if (typeof window.itemFlow == 'undefined') {
+    $('.item-flow').flowtype({minFont: 10, fontRatio:15});
+    window.itemFlow = true;
+  }

@@ -58,3 +58,4 @@ gem "font-awesome-rails"
 gem 'kaminari'
 gem 'puma'
 gem 'kramdown'
+gem 'nprogress-rails'

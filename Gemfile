@@ -57,3 +57,4 @@ gem 'pundit'
 gem "font-awesome-rails"
 gem 'kaminari'
 gem 'puma'
+gem 'kramdown'

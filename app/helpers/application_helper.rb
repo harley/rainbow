@@ -25,8 +25,7 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    # Kramdown::Document.new(text).to_html.html_safe
-    simple_format text
+    Kramdown::Document.new(text).to_html.html_safe
   end
 
   # override kaminari helper to support sunspot

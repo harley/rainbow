@@ -17,6 +17,7 @@ class Item < ActiveRecord::Base
     time :created_at
 
     # for facets
+    string(:format) { kind }
     string :author
     string :publisher
     string(:subject) { subject.try(:name) }
@@ -94,7 +95,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.facet_fields
-    %i(author publisher subject category school_level)
+    %i(format author publisher subject category school_level)
   end
 
   def self.find_authors(name = nil)

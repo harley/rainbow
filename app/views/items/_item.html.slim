@@ -10,7 +10,9 @@
       = render 'available_count', item: item
 
 javascript:
-  if (typeof window.itemFlow == 'undefined') {
-    $('.item-flow').flowtype({minFont: 10, fontRatio:15});
-    window.itemFlow = true;
-  }
+  $(function(){
+    if (typeof window.itemFlow == 'undefined') {
+      $('.item-flow').flowtype({minFont: 10, fontRatio:15});
+      window.itemFlow = true;
+    }
+  });

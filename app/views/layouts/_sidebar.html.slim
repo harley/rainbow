@@ -10,8 +10,8 @@
           span.hidden-xs New Book
           =< fa_icon "leanpub lg", class: 'pull-right'
       li
-        = link_to reservations_path do
-          span.hidden-xs Return A Book
+        = link_to admin_reservations_path(q: 'reserved') do
+          span.hidden-xs Check Out
           =< fa_icon "barcode lg", class: 'pull-right'
   div.hidden-xs style="padding-left: 5px; padding-right:5px"
     = render 'shared/search', path: items_path

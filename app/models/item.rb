@@ -34,8 +34,9 @@ class Item < ActiveRecord::Base
 
   # override to allow creating subjects on the fly
   def subject_id=(value)
-    if value && value.match(/\w+/)
-      s = Subject.where(name: value).first_or_create!
+    if Subject.find_by_id(value)
+      super
+    elsif (s = Subject.where(name: value).first_or_create).id
       super(s.id)
     else
       super
@@ -43,8 +44,9 @@ class Item < ActiveRecord::Base
   end
 
   def school_level_id=(value)
-    if value && value.match(/\w+/)
-      s = SchoolLevel.where(name: value).first_or_create!
+    if SchoolLevel.find_by_id(value)
+      super
+    elsif (s = SchoolLevel.where(name: value).first_or_create).id
       super(s.id)
     else
       super
@@ -52,8 +54,9 @@ class Item < ActiveRecord::Base
   end
 
   def category_id=(value)
-    if value && value.match(/\w+/)
-      s = Category.where(name: value).first_or_create!
+    if Category.find_by_id(value)
+      super
+    elsif (s = Category.where(name: value).first_or_create).id
       super(s.id)
     else
       super

@@ -37,4 +37,5 @@ h1 Catalog
         = render 'available_count', item: item
 
 coffee:
+  $(window).load -> $(".preloader").fadeOut("slow")
   window.ItemsJs.setupItems()

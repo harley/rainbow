@@ -20,7 +20,8 @@ h1 Catalog
   = render 'list_vs_grid'
 
 = paginate @items
-.page-entries-info = page_entries_info @items
+.page-entries-info style="margin-left:10px"
+  = page_entries_info @items
 
 .items
   .row.list-group

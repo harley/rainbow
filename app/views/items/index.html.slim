@@ -23,18 +23,19 @@ h1 Catalog
 .page-entries-info style="margin-left:10px"
   = page_entries_info @items
 
-.items
-  .row.list-group
-    - @items.each do |item|
-      = render 'item', item: item
+/= render 'items/v1/items'
+#items-container
+  - @items.each do |item|
+    .item
+      .thumbnail
+        = link_to item do
+          - if item.filepicker_url?
+            = filepicker_image_tag item.filepicker_url, w: 167, h: 127, fit: 'clip'
+          - else
+            = image_tag "http://placehold.it/167x127&text=No+Image!", class: 'list-group-image'
+        .caption
+          = render 'item_preview', item: item
+          = render 'available_count', item: item
 
 coffee:
-  $('#list').click ->
-    $('.items .item').addClass('list-group-item')
-    $(this).addClass('active').siblings().removeClass('active')
-    $('.list-group.row').removeClass('row')
-
-  $('#grid').click ->
-    $('.items .item').removeClass('list-group-item')
-    $(this).addClass('active').siblings().removeClass('active')
-    $('.list-group').addClass('row')
+  window.ItemsJs.setupItems()

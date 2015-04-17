@@ -17,5 +17,7 @@
 //= require nprogress
 //= require nprogress-turbolinks
 //= require flowtype
+//= require masonry.pkgd.min
 //= require selectize
 //= require home
+//= require items

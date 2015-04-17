@@ -1,0 +1,15 @@
+.items
+  .row.list-group
+    - @items.each do |item|
+      = render 'items/v1/item', item: item
+
+coffee:
+  $('#list').click ->
+    $('.items .item').addClass('list-group-item')
+    $(this).addClass('active').siblings().removeClass('active')
+    $('.list-group.row').removeClass('row')
+
+  $('#grid').click ->
+    $('.items .item').removeClass('list-group-item')
+    $(this).addClass('active').siblings().removeClass('active')
+    $('.list-group').addClass('row')

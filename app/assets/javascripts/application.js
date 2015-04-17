@@ -17,6 +17,7 @@
 //= require nprogress
 //= require nprogress-turbolinks
 //= require flowtype
+//= require imagesloaded.pkgd.min
 //= require masonry.pkgd.min
 //= require selectize
 //= require home

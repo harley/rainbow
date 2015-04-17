@@ -1,0 +1,28 @@
+#items-container {
+  .item a, img {
+    display: block;
+    max-width: 100%;
+  }
+  .item {
+    width: 150px;
+    max-width: 50%;
+    border: 1px solid #ccc;
+
+    &:hover, &:focus {
+      color: $brand-primary;
+      z-index: 1000;
+      @include box-shadow(0 0 16px);
+      .edit-icon {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  #items-container .item {
+    width: 140px;
+  }
+}
+
+#items-container #loading {display: none}

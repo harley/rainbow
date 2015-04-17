@@ -1,6 +1,8 @@
 window.ItemsJs =
   setupItems: ->
-    container = $('#items-container')
-    msnry = new Masonry container,
-      itemSelector: '.item',
-      columnWidth: 200
+    $container = $('#items-container').masonry(
+      gutter: 1
+    );
+    # layout Masonry again after all images have loaded
+    $container.imagesLoaded ->
+      $container.masonry();

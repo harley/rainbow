@@ -2,11 +2,24 @@
 // Styling the sidebar here
 /////////////////////////////
 
-/* this is only to style the sidebar - you can make the sidebar look any way you want */
 .sidebar {
   padding: 20px;
   background-image: image-url('congruent_outline/congruent_outline.png');
   border-right: 1px solid #eee;
+}
+
+.hide-sidebar-drawer {
+  display: block;
+  width: 50px;
+  float: left;
+  margin-left: 0;
+}
+.navbar-inverse .hide-sidebar-drawer {
+  color: rgba(255, 255, 255, .4);
+  &:hover {
+    border-color: rgba(255, 255, 255, .4);
+  }
+  border-radius: 0;
 }
 
 /////////////////////////////

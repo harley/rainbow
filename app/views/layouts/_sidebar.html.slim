@@ -1,16 +1,16 @@
 ul.nav.navbar-stacked style="margin-bottom:20px"
   li class=('active' if current_page?(items_path))
     = link_to items_path do
-      span.hidden-xs Catalog
+      span Catalogue
       =< fa_icon "book lg", class: 'pull-right'
   - if current_admin
     li class=('active' if current_page?(new_item_path))
       = link_to new_item_path do
-        span.hidden-xs New Book
+        span New Book
         =< fa_icon "leanpub lg", class: 'pull-right'
     li
       = link_to admin_reservations_path(q: 'reserved') do
-        span.hidden-xs Check Out
+        span Check Out
         =< fa_icon "barcode lg", class: 'pull-right'
 div style="padding-left: 5px; padding-right:5px"
   = render 'shared/search', path: items_path

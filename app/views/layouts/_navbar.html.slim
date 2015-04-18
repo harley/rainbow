@@ -6,7 +6,8 @@
   button.navbar-toggle.hide-sidebar-drawer.visible-md.visible-lg href="#"
     = fa_icon 'chevron-left lg'
   button.navbar-toggle.toggle-right data-toggle="sidebar" data-target=".sidebar-right"
-    span.label = current_role
+    span.label
+      = current_role
   a.navbar-brand href="/"
     = fa_icon 'university lg'
     span.brand-text

@@ -1,45 +1,3 @@
-.item.list-group-item:first-child {
-  margin-top: 10px;
-}
-.items .row {
-  margin-left: -10px;
-}
-
-.item.list-group-item
-{
-  float: none;
-  width: 100%;
-  .thumbnail {
-    border: none;
-    text-align: left;
-  }
-  .panel-footer {
-    background: none;
-    border: none;
-  }
-}
-/* give the image a left float in the list view */
-.item > .thumbnail > a {
-  height: 126px;
-  display: block;
-}
-.item.list-group-item > .thumbnail > a {
-  width: 167px;
-  float: left;
-  margin-right: 15px;
-}
-// .item.list-group-item > a img {float:left;}
-/* and clearfix the left float of the image */
-.item.list-group-item:before,
-.item.list-group-item:after {
-  display: table;
-  content: " ";
-}
-.item.list-group-item:after
-{
-  clear:both;
-}
-
 .item {
   padding: 10px;
 }
@@ -119,4 +77,8 @@
       display: block;
     }
   }
+}
+
+.item-author {
+  font-size: .9em;
 }

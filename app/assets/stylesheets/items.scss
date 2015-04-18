@@ -27,6 +27,7 @@
 }
 
 .facet-values {
+  font-size: .9em;
   display: table;
   width: 100%;
   li {
@@ -53,6 +54,9 @@
   }
   .remove {
     text-indent: 12px;
+  }
+  li.active a {
+    font-weight: bold;
   }
 }
 

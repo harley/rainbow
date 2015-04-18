@@ -9,10 +9,18 @@ class ItemsController < ApplicationController
     @search = Item.search do
       fulltext params[:search]
       order_by(:created_at, :desc)
+
+      filters = []
       Item.facet_fields.each do |field|
-        facet(field)
-        with(field, params[field]) if params[field].present?
+        if params[field].present?
+          filters << with(field, params[field])
+        end
       end
+
+      Item.facet_fields.each do |field|
+        facet(field, exclude: filters)
+      end
+
       paginate(page: params[:page], per_page: params[:per_page])
     end
 

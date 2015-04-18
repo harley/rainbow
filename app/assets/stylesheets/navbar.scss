@@ -1,3 +1,6 @@
+body {
+  padding-top: 57px;
+}
 .dark-bg .navbar.navbar-inverse {
   background-image: image-url('congruent_outline/congruent_outline.png');
 }
@@ -18,4 +21,11 @@
       margin-left: 5px;
     }
   }
+  transition: top 0.2s ease-in-out;
+}
+
+.nav-down {
+}
+.nav-up {
+  top: -57px;
 }

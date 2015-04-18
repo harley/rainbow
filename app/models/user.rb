@@ -9,11 +9,7 @@ class User < ActiveRecord::Base
   has_many :reservations, through: :member
 
   extend Enumerize
-  enumerize :role, in: [:admin, :reader], default: :admin
-  # TODO: add role to users
-  def admin?
-    true
-  end
+  enumerize :role, in: [:admin, :reader], default: :reader, predicates: true
 
   def to_s
     email

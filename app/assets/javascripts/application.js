@@ -20,5 +20,6 @@
 //= require imagesloaded.pkgd.min
 //= require masonry.pkgd.min
 //= require selectize
+//= require sidebar
 //= require home
 //= require items

@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
     end
 
     @items = @search.results
+    @preloader = true
   end
 
   def new

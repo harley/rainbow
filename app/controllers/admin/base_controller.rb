@@ -1,6 +1,5 @@
 class Admin::BaseController < ApplicationController
   before_action :require_admin!
-  layout 'admin'
 
   helper_method :sorting_column
   helper_method :sorting_direction

@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Adds a few additional behaviors into the application controller 
-
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   include Pundit
@@ -10,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin
   helper_method :current_role
   helper_method :reader?
-  layout :layout_per_role
+  # layout :layout_per_role
 
   protected
   def current_admin
@@ -34,6 +32,6 @@ class ApplicationController < ActionController::Base
   end
 
   def layout_per_role
-    current_role == 'admin' ? 'admin' : 'reader'
+    current_role == 'admin' ? 'admin' : 'application'
   end
 end

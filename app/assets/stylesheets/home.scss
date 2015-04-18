@@ -1,23 +1,9 @@
-a.navbar-brand {
-  border: none;
-  background-color: inherit;
-  font-size: 2em;
-  padding: 10px;
-  font-weight: bold;
-  img {
-    max-height: 50px;
-    margin-top: -15px;
-  }
-  &.brand-text {
-    padding-top:15px;
-    padding-left: 0;
-  }
-}
-.navbar-default .navbar-brand {
-  color: $brand-primary;
-}
 .navbar-inverse .navbar-brand {
   color: $gray-lighter;
+}
+
+.dark-bg li > a {
+  color: lighten($brand-primary, 10%);
 }
 
 .container-fluid .navbar-brand.brand-text {

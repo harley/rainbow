@@ -16,7 +16,7 @@ h1 Catalog
         a.btn.btn-default.btn-sm.remove href=(url_for(field => nil))
           span.glyphicon.glyphicon-remove
 
-.pull-right
+/.pull-right
   = render 'list_vs_grid'
 
 = paginate @items
@@ -37,5 +37,4 @@ h1 Catalog
         = render 'available_count', item: item
 
 coffee:
-  $(window).load -> $(".preloader").fadeOut("slow")
   window.ItemsJs.setupItems()

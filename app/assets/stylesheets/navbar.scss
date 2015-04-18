@@ -1,0 +1,21 @@
+.dark-bg .navbar.navbar-inverse {
+  background-image: image-url('congruent_outline/congruent_outline.png');
+}
+.navbar-header {
+  width: 100%;
+  text-align: center;
+  > .navbar-brand {
+    display: inline-block;
+    float: none;
+
+    > i.fa {
+      vertical-align: 0;
+    }
+    > .brand-text {
+      font-size: 1.3em;
+      line-height: 1em;
+      font-family: "Georgia", "Cambria", "Times New Roman", "Times", serif;
+      margin-left: 5px;
+    }
+  }
+}

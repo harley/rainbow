@@ -3,4 +3,5 @@ window.ItemsJs =
     $container = $('#items-container').masonry();
     # layout Masonry again after all images have loaded
     $container.imagesLoaded ->
-      $container.masonry();
+      $container.masonry()
+      window.HomeJs.hidePreloader()

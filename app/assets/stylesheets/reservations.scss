@@ -7,3 +7,23 @@
   @extend .btn-default;
   background-color: lighten($gray-base, 70%);
 }
+
+.nav-tabs > li:not(.active) {
+  a.reservation-reserved, a.reservation-borrowed, a.reservation-returned {
+    color: #eee;
+    &:hover, &:visited {
+      color: inherit;
+    }
+  }
+}
+
+.tabbed-body {
+  background-color:white;
+  border: 1px solid #ddd;
+  border-top: none;
+  margin-bottom:20px;
+  table.table {
+    table-layout: fixed;
+    word-wrap: break-word;
+  }
+}

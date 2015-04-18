@@ -1,46 +1,52 @@
 h1 Reservations
 
-.btn-group
-  a.btn.btn-default.reservation-reserved href=(url_for(q: 'reserved')) class=('active' if params[:q] == 'reserved')
-    ' Reserved
-    span.badge = Reservation.reserved.count
-  a.btn.btn-default.reservation-borrowed href=(url_for(q: 'borrowed')) class=('active' if params[:q] == 'borrowed')
-    ' Borrowed
-    span.badge = Reservation.borrowed.count
-  a.btn.btn-default.reservation-returned href=(url_for(q: 'returned')) class=('active' if params[:q] == 'returned')
-    ' Returned
-    span.badge = Reservation.returned.count
-  - if params[:q].present?
-    a.btn.btn-default href=(url_for(q: nil))
-      i.glyphicon.glyphicon-remove
-p
-table.table.table-condensed.reflow-on-mobile
-  thead
-    tr.active
-      th = sorting_link :item_title, "Item"
-      th = sorting_link :member_name, "Member"
-      th Status
-      th.text-smaller = sorting_link :due_date
-      th.text-smaller = sorting_link :checked_out_at
-      th.text-smaller = sorting_link :checked_out_by
-      th.text-smaller = sorting_link :checked_in_at
-      th.text-smaller = sorting_link :checked_in_by
-      th.text-smaller = sorting_link :updated_at
-  tbody
-    - @reservations.each do |reservation|
-      = content_tag_for :tr, reservation
-        td = link_to reservation.item, reservation.item
-        td = link_to reservation.member, [:admin, reservation.member]
-        td
-          span.label> class="reservation-#{reservation.status}"
-            = reservation.status
-          = notes_indicator(reservation, :notes)
-        td.timestamp = time_vs_now(reservation.due_date)
-        td = render 'reservations/check_out', reservation: reservation
-        td = reservation.checked_out_by
-        td = render 'reservations/check_in', reservation: reservation
-        td = reservation.checked_in_by
-        td.timestamp = time_vs_now(reservation.updated_at)
+ul.nav.nav-tabs
+  li role="presentation" class=('active' if params[:q] == 'reserved')
+    a.reservation-reserved href=(url_for(q: 'reserved'))
+      ' Reserved
+      span.badge = Reservation.reserved.count
+
+  li role="presentation" class=('active' if params[:q] == 'borrowed')
+    a.reservation-borrowed href=(url_for(q: 'borrowed'))
+      ' Borrowed
+      span.badge = Reservation.borrowed.count
+  li role="presentation" class=('active' if params[:q] == 'returned')
+    a.reservation-returned href=(url_for(q: 'returned'))
+      ' Returned
+      span.badge = Reservation.returned.count
+  li role="presentation" class=('active' unless params[:q].present?)
+    a href=(admin_reservations_path)
+      ' All
+      span.badge = Reservation.count
+
+.tabbed-body
+  table.table.table-condensed.reflow-on-mobile
+    thead
+      tr.active
+        th = sorting_link :item_title, "Item"
+        th = sorting_link :member_name, "Member"
+        th Status
+        th.text-smaller = sorting_link :due_date
+        th.text-smaller = sorting_link :checked_out_at
+        th.text-smaller = sorting_link :checked_out_by
+        th.text-smaller = sorting_link :checked_in_at
+        th.text-smaller = sorting_link :checked_in_by
+        th.text-smaller = sorting_link :updated_at
+    tbody
+      - @reservations.each do |reservation|
+        = content_tag_for :tr, reservation
+          td = link_to reservation.item, reservation.item
+          td = link_to reservation.member, [:admin, reservation.member]
+          td
+            span.label> class="reservation-#{reservation.status}"
+              = reservation.status
+            = notes_indicator(reservation, :notes)
+          td.timestamp = time_vs_now(reservation.due_date)
+          td.text-smaller = render 'reservations/check_out', reservation: reservation
+          td.text-smaller = reservation.checked_out_by
+          td.text-smaller = render 'reservations/check_in', reservation: reservation
+          td.text-smaller = reservation.checked_in_by
+          td.timestamp = time_vs_now(reservation.updated_at)
 
 coffee:
   $('[data-toggle="popover"]').popover()

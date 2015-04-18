@@ -1,7 +1,5 @@
 h1 Items added by you
-= render 'list_vs_grid'
+.alert.alert-info
+  | Thank you for helping us catalogue the items in the library.
 
-.items
-  .row.list-group
-    - @items.each do |item|
-      = render 'item', item: item
+= render 'items', items: @items

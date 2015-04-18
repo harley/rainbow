@@ -19,22 +19,4 @@ h1 Catalog
 /.pull-right
   = render 'list_vs_grid'
 
-= paginate @items
-.page-entries-info style="margin-left:10px"
-  = page_entries_info @items
-
-/= render 'items/v1/items'
-#items-container
-  - @items.each do |item|
-    .item
-      = link_to item do
-        - if item.filepicker_url?
-          = filepicker_image_tag item.filepicker_url, w: 150, fit: 'clip'
-        - else
-          = image_tag "http://placehold.it/167x127&text=No+Image!", class: 'list-group-image'
-      .caption
-        = render 'item_preview', item: item
-        = render 'available_count', item: item
-
-coffee:
-  window.ItemsJs.setupItems()
+= render 'items', items: @items

@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_filter :authenticate_user!, only: [:added_by_me]
 
   def added_by_me
-    @items = current_user.added_items
+    @items = current_user.added_items.page(params[:page]).per(params[:per_page])
   end
 
   def index

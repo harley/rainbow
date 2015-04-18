@@ -21,6 +21,17 @@
   }
   border-radius: 0;
 }
+.navbar-toggle.toggle-right {
+  color: #efefef;
+  border-color: rgba(255, 255, 255, .4);
+  > .label {
+    font-size: 100%;
+  }
+}
+
+.navbar-toggle {
+  margin-bottom: 6px;
+}
 
 /////////////////////////////
 // Generic sidebar configuration here

@@ -1,6 +1,6 @@
 - if flash.present?
   - flash.each do |name, msg|
-    p[class="alert #{flasherize name}"] 
+    p[class="alert #{flasherize name} fade in"] 
       button.close data-dismiss="alert"
         | &times;
       = msg

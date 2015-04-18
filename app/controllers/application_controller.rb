@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   # use to determine layout
   def current_role
     return session[:role] if session[:role]
-    session[:role] = current_user.try(:role)
+    session[:role] = current_user.try(:role) || 'guest'
   end
 
   def reader?

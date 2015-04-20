@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
+  strip_attributes collapse_spaces: true
+
   belongs_to :user
   has_many :reservations, dependent: :destroy
 

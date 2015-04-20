@@ -59,3 +59,4 @@ gem 'kaminari'
 gem 'puma'
 gem 'kramdown'
 gem 'nprogress-rails'
+gem "strip_attributes"

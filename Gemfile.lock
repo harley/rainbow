@@ -238,6 +238,8 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     stamp (0.6.0)
+    strip_attributes (1.7.0)
+      activemodel (>= 3.0, < 5.0)
     sunspot (2.1.1)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
@@ -294,6 +296,7 @@ DEPENDENCIES
   slim-rails (~> 3.0.1)
   spring
   stamp
+  strip_attributes
   sunspot_rails
   sunspot_solr
   turbolinks

@@ -9,7 +9,7 @@
         .thumbnail
           = link_to @item do
             - if @item.filepicker_url?
-              = filepicker_image_tag @item.filepicker_url, w: 160, h: 160, fit: 'clip'
+              = filepicker_image_tag @item.filepicker_url, w: 320, fit: 'clip'
             - else
               = image_tag "http://placehold.it/100&text=No+Image!", class: 'list-group-image'
           .caption
@@ -19,8 +19,11 @@
         = render 'item_extras', item: @item
       .panel-footer
         - @item.hard_tags.each do |k, v|
-          span.label.label-info
-            | #{k.humanize}: #{v}
+          div style="display:inline-block;white-space:nowrap"
+            = fa_icon 'angle-left'
+            span> #{k.humanize}:
+            = link_to v, items_path(k => v.to_s)
+            = fa_icon 'angle-right'
 
       .panel-footer
         - if @item.available_count <= 0

@@ -2,7 +2,7 @@
   .panel-body
     - if f.object.filepicker_url?
       .thumbnail
-        = filepicker_image_tag f.object.filepicker_url, w: 160, h: 160, fit: 'clip'
+        = filepicker_image_tag f.object.filepicker_url, w: 320, fit: 'clip'
     = f.filepicker_field :filepicker_url, class: 'btn btn-default', button_text: "Change Image"
     .text-muted
       | (after selecting an image, remember to save changes)

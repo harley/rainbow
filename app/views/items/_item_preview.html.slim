@@ -1,5 +1,6 @@
 .item-preview
-  h4.list-group-item-heading = item.title
+  h4.list-group-item-heading
+    = link_to item.title, item
   .list-group-item-text
     .item-author
       span.text-muted by

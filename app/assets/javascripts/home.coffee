@@ -12,6 +12,7 @@ window.HomeJs =
       $('.main-body').removeClass('col-md-9 col-md-offset-3')
       $('button.hidden-md').removeClass('hidden-md hidden-lg')
       $(this).removeClass('visible-md visible-lg').hide()
+      window.dispatchEvent(new Event('resize'))
 
   setupScrolling: ->
     @didScroll = false

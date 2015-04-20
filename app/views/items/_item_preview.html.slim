@@ -4,6 +4,6 @@
   .list-group-item-text
     .item-author
       span.text-muted by
-      =< link_to item.author, params.merge(author: item.author)
+      =< link_to item.author, items_path(query_params.merge(author: item.author))
     p.item-publisher
-      =< link_to item.publisher, params.merge(publisher: item.publisher)
+      =< link_to item.publisher, items_path(query_params.merge(publisher: item.publisher))

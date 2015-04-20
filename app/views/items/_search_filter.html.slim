@@ -13,9 +13,9 @@
             - search.facet(field).rows.sort_by(&:value).each do |row|
               li class=('active' if row.value == params[field])
                 span.facet-label
-                  => link_to row.value.presence || '(unknown)', url_for(params.merge(field => row.value))
+                  => link_to row.value.presence || '(unknown)', url_for(query_params.merge(field => row.value))
                   - if row.value == params[field]
-                    = link_to params.merge(field => nil), class: 'remove' do
+                    = link_to query_params.merge(field => nil), class: 'remove' do
                       span.glyphicon.glyphicon-remove
                       span.sr-only
                         | [remove]

@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150420155639) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+  add_index "categories", ["name"], name: "index_categories_on_name", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20150420155639) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "school_levels", ["name"], name: "index_school_levels_on_name", unique: true, using: :btree
+  add_index "school_levels", ["name"], name: "index_school_levels_on_name", using: :btree
 
   create_table "subjects", force: :cascade do |t|
     t.string   "name"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20150420155639) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "subjects", ["name"], name: "index_subjects_on_name", unique: true, using: :btree
+  add_index "subjects", ["name"], name: "index_subjects_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

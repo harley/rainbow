@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -21,17 +20,15 @@ ActiveRecord::Schema.define(version: 20150420155639) do
     t.boolean  "primary",    default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["primary"], name: "index_announcements_on_primary", using: :btree
   end
-
-  add_index "announcements", ["primary"], name: "index_announcements_on_primary", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", using: :btree
   end
-
-  add_index "categories", ["name"], name: "index_categories_on_name", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
@@ -50,13 +47,12 @@ ActiveRecord::Schema.define(version: 20150420155639) do
     t.integer  "category_id"
     t.integer  "subject_id"
     t.integer  "school_level_id"
+    t.index ["added_by_id"], name: "index_items_on_added_by_id", using: :btree
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["code"], name: "index_items_on_code", using: :btree
+    t.index ["school_level_id"], name: "index_items_on_school_level_id", using: :btree
+    t.index ["subject_id"], name: "index_items_on_subject_id", using: :btree
   end
-
-  add_index "items", ["added_by_id"], name: "index_items_on_added_by_id", using: :btree
-  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
-  add_index "items", ["code"], name: "index_items_on_code", using: :btree
-  add_index "items", ["school_level_id"], name: "index_items_on_school_level_id", using: :btree
-  add_index "items", ["subject_id"], name: "index_items_on_subject_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id"
@@ -65,9 +61,8 @@ ActiveRecord::Schema.define(version: 20150420155639) do
     t.string   "sid"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["sid"], name: "index_members_on_sid", using: :btree
   end
-
-  add_index "members", ["sid"], name: "index_members_on_sid", using: :btree
 
   create_table "reservations", force: :cascade do |t|
     t.integer  "item_id"
@@ -82,25 +77,22 @@ ActiveRecord::Schema.define(version: 20150420155639) do
     t.text     "notes"
     t.text     "check_in_notes"
     t.text     "check_out_notes"
+    t.index ["item_id"], name: "index_reservations_on_item_id", using: :btree
   end
-
-  add_index "reservations", ["item_id"], name: "index_reservations_on_item_id", using: :btree
 
   create_table "school_levels", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_school_levels_on_name", using: :btree
   end
-
-  add_index "school_levels", ["name"], name: "index_school_levels_on_name", using: :btree
 
   create_table "subjects", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_subjects_on_name", using: :btree
   end
-
-  add_index "subjects", ["name"], name: "index_subjects_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -117,10 +109,9 @@ ActiveRecord::Schema.define(version: 20150420155639) do
     t.datetime "updated_at"
     t.boolean  "guest",                  default: false
     t.string   "role"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "items", "categories"
   add_foreign_key "items", "school_levels"

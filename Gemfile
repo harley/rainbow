@@ -32,14 +32,14 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'dotenv-rails'
-  gem 'sunspot_solr'
+  gem 'sunspot_solr', '2.2.8'
   gem 'byebug', platform: :mri
 end
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 gem 'rails_12factor', group: :production
-gem 'sunspot_rails'
+gem 'sunspot_rails', '2.2.8'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'rails_admin', '~> 1.0'
 gem 'enumerize', '~> 0.11.0'

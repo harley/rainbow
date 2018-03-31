@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.5.1'
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg'
@@ -29,9 +29,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'better_errors'
-  gem 'binding_of_caller'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'dotenv-rails'
@@ -50,7 +47,7 @@ gem 'omniauth-google-oauth2'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'filepicker-rails'
-gem "rails_admin_import", path: 'vendor/gems/rails_admin_import'
+gem "rails_admin_import"
 gem "selectize-rails", '~> 0.12.0'
 gem 'stamp'
 gem 'pundit'
@@ -58,7 +55,7 @@ gem 'pundit'
 gem "font-awesome-rails"
 gem 'kaminari'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma'
 gem 'kramdown'
 gem 'nprogress-rails'
 gem "strip_attributes"

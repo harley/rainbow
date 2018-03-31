@@ -9,7 +9,7 @@ default: &default
   timeout: 5000
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV['USER'] %>
+  username: <%= ENV['USER'] || 'postgres' %>
   password:
   host: localhost
 

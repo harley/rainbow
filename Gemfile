@@ -59,7 +59,7 @@ gem 'puma'
 gem 'kramdown'
 gem 'nprogress-rails'
 gem "strip_attributes"
-gem 'nokogiri', '1.6.8'
+gem 'nokogiri', '1.8.2'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

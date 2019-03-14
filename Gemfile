@@ -45,7 +45,7 @@ gem 'rails_admin', '~> 1.0'
 gem 'enumerize', '~> 0.11.0'
 gem 'omniauth-google-oauth2'
 
-gem 'bootstrap-sass', '~> 3.3.4'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'filepicker-rails'
 gem "rails_admin_import"
 gem "selectize-rails", '~> 0.12.0'

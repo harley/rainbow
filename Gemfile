@@ -40,7 +40,7 @@ gem 'devise-guests', '~> 0.3'
 gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 gem 'rails_12factor', group: :production
 gem 'sunspot_rails', '2.2.8'
-gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'simple_form', '~> 5.0', '>= 3.2.1'
 gem 'rails_admin', '~> 1.0'
 gem 'enumerize', '~> 0.11.0'
 gem 'omniauth-google-oauth2'
